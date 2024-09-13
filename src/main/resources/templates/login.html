@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .login-image {
+            background: url('https://via.placeholder.com/600') no-repeat center center;
+            background-size: cover;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .login-form {
+            padding: 30px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .form-group.center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<br/><br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card login-container">
+                <div class="row g-0">
+                    <div class="col-md-6 login-image">
+                        <img src="https://img.freepik.com/free-vector/login-concept-illustration_114360-757.jpg" style="width:500px;height:500px">
+                    </div>
+                    <div class="col-md-6 login-form">
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">Invalid Email or Password</div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="alert alert-success">You have been logged out.</div>
+                        </div>
+                        <div class="card-header">
+                            <h2 class="text-center">Login Form</h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" role="form" th:action="@{/login}" class="form-horizontal">
+                                <div class="form-group mb-3">
+                                    <label class="control-label">Email</label>
+                                    <input type="text" id="username" name="username" class="form-control"
+                                           placeholder="Enter email address"/>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="control-label">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control"
+                                           placeholder="Enter password"/>
+                                </div>
+                                <div class="form-group center mb-3">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                <div class="form-group center">
+                                    <span>Don't have a account? <a th:href="@{/register}" style="text-decoration:none"><b>Register</b></a></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

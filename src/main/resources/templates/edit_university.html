@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit University | Smart Metropolis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+        }
+
+        .image-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .image-container img {
+            width: 100%; /* Adjust width to fit container */
+            max-width: 600px; /* Set a max-width to ensure it doesn't get too large */
+            border-radius: 10px;
+        }
+
+        .form-container {
+            flex: 2;
+        }
+
+        .form-container h1 {
+            font-size: 24px;
+            color: #050C9C;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-container form label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-container form input[type="text"],
+        .form-container form input[type="email"],
+        .form-container form input[type="file"],
+        .form-container form textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%; /* Ensure input fields take full width */
+            box-sizing: border-box; /* Include padding and border in width calculation */
+        }
+
+        .form-container form textarea {
+            height: 100px; /* Adjust height for better readability */
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        .form-container form button {
+            background-color: #007bff; /* Blue background color */
+            color: #fff; /* White text color */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%; /* Ensure button takes full width */
+        }
+
+        .form-container form button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .form-container .img-thumbnail {
+            max-width: 150px; /* Set max width for the thumbnail */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <!-- Placeholder for image, replace with actual image source -->
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/016/245/771/small_2x/happy-young-students-in-casual-clothes-standing-together-flat-cartoon-illustration-free-vector.jpg" alt="University Image"/>
+        </div>
+        <div class="form-container">
+            <h1>Edit University</h1>
+            <form action="/update_university" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" th:value="${university.id}">
+                <div class="form-group">
+                    <label for="name">University Name:</label>
+                    <input type="text" id="name" name="name" th:value="${university.name}" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required th:text="${university.description}"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" th:value="${university.location}" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactInfo">Contact Info:</label>
+                    <input type="text" id="contactInfo" name="contactInfo" th:value="${university.contactInfo}" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" th:value="${university.email}" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="file" id="image" name="image">
+                    <img th:src="@{'/uploads/' + ${university.imageUrl}}" alt="University Image" class="img-thumbnail">
+                </div>
+                <button type="submit">Update University</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

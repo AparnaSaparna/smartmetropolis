@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Metropolis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+   body {
+    background: #f4f7fa;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Container for the main content */
+.container {
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    flex-direction: column;
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Optional padding */
+    width: 100%;
+    background: #f4f7fa; /* Ensure background extends */
+}
+
+/* Main content styling */
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1200px; /* Increased max-width for more space */
+    width: 100%; /* Ensures responsiveness */
+    text-align: center; /* Center content within main-content */
+    margin: 20px 0; /* Margin to separate from other content */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    max-width: 1200px; /* Increased max-width to match container */
+    min-width: 1000px; /* Increased minimum width for more width */
+    border-collapse: collapse;
+    margin: 0 auto; /* Center the table */
+    background: #ffffff; /* Ensure background is white */
+}
+
+
+
+
+        thead {
+            background-color: #050C9C; /* Dark Blue for header background */
+            color: #ffffff; /* White text color for header */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2; /* Light gray for even rows */
+        }
+
+        tbody tr:hover {
+            background-color: #ddd; /* Light gray on hover */
+        }
+
+        img {
+            max-width: 100%; /* Ensure images fit within table cells */
+            height: auto;
+        }
+
+/* Ensure both buttons have the same size */
+.btn-edit, .btn-delete {
+    display: inline-flex; /* Ensures buttons behave consistently */
+    align-items: center; /* Centers text vertically */
+    justify-content: center; /* Centers text horizontally */
+    padding: 10px 20px; /* Consistent padding */
+    width: 120px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px; /* Font size */
+    line-height: 1; /* Ensures text alignment */
+}
+
+.btn-edit {
+    background-color: #4CAF50; /* Green for edit button */
+}
+
+.btn-delete {
+    background-color: #f44336; /* Red for delete button */
+}
+
+.btn-edit:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.btn-delete:hover {
+    background-color: #e53935; /* Darker red on hover */
+}
+
+a.btn-edit, a.btn-delete {
+    text-decoration: none;
+    color: #fff;
+}
+ .btn-add {
+            background-color: #87CEEB; /* Sky blue color */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px; /* Padding for button size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-align: center; /* Center text */
+            text-decoration: none; /* Remove underline from text */
+            display: inline-block; /* Inline-block display */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            position: absolute; /* Absolute positioning */
+            right: 20px; /* Distance from the right edge */
+            top: 20px; /* Distance from the top edge */
+        }
+    .btn-add:hover {
+        background-color: #00BFFF; /* Darker sky blue background on hover */
+    }
+
+
+        .dashboard-title {
+            text-align: center; /* Center align the title */
+            font-size: 2rem; /* Larger font size */
+            font-weight: 700; /* Bold text */
+            color: #050C9C; /* Theme color */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+            margin: 0; /* Remove default margin */
+            padding: 10px 0; /* Padding for spacing */
+        }
+
+        .main-top {
+            display: flex;
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Align items vertically */
+            margin-bottom: 20px; /* Space below the top section */
+        }
+        .btn-back {
+            background-color: #007bff; /* Blue background color */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px; /* Padding for button size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-align: center; /* Center text */
+            text-decoration: none; /* Remove underline from text */
+            display: inline-block; /* Inline-block display */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            position: absolute; /* Absolute positioning */
+            left: 20px; /* Distance from the left edge */
+            top: 20px; /* Distance from the top edge */
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3; /* Darker blue background on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-top">
+            <a href="/add_shop" class="btn btn-add">Add</a>
+            <a th:href="@{/admin-dashboard}" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+        <h1 class="dashboard-title">Shopping Centers</h1>
+
+        <div class="main-content">
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+            <th>Entertainment</th>
+            <th>Food Court</th>
+            <th>Anchor Stores</th>
+            <th>Special Features</th>
+            <th>Parking</th>
+            <th>Accessibility</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="shop : ${shops}">
+            <td th:text="${shop.name}"></td>
+            <td th:text="${shop.description}"></td>
+            <td th:text="${shop.openingTime}"></td>
+            <td th:text="${shop.closingTime}"></td>
+            <td th:text="${shop.entertainment}"></td>
+            <td th:text="${shop.foodCourt}"></td>
+            <td th:text="${shop.anchorStores}"></td>
+            <td th:text="${shop.specialFeatures}"></td>
+            <td th:text="${shop.parking}"></td>
+            <td th:text="${shop.accessibility}"></td>
+            <td>
+                <img th:src="@{'/uploads/' + ${shop.imagePath}}" alt="Shop Image" width="100px" />
+            </td>
+            <td>
+                <a th:href="@{'/edit_shop?id=' + ${shop.id}}">Edit</a>
+                <form th:action="@{/delete_shop}" method="post">
+                    <input type="hidden" th:name="id" th:value="${shop.id}" />
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+        </div>
+    </div>
+</body>
+
+</html>

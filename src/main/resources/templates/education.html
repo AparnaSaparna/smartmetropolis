@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Smart Metropolis</title>
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    
+        <!-- Include Bootstrap CSS and Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-digimedia-v1.css">
+    <link rel="stylesheet" href="/assets/css/animated.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playball&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      
+   <style>
+
+    :root {
+    --primary: #050C9C;
+    --secondary: #525368;
+    --light: #E8F5E9;
+    --dark: #3f1368;
+}
+.back{
+    /* background: linear-gradient(rgba(169, 170, 173, 0.5), rgba(169, 170, 173, 0.5)); */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.icon-blue {
+    color: #050C9C; /* Dark blue color */
+}
+.btn{
+    background-color: #050C9C;
+    color: white;
+}
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 30px;
+    bottom: 30px;
+    z-index: 99;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+.fw-bold {
+    font-weight: 700 !important;
+    color: #080a2f;
+}
+
+
+h3,
+.h3,
+h4,
+.h4,
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+h5,
+.h5,
+h6,
+.h6,
+.fw-semi-bold {
+    font-weight: 500 !important;
+} */
+
+
+
+/*** Button ***/
+.btn {
+    transition: .5s;
+    font-weight: 500;
+}
+
+.btn-primary,
+.btn-outline-primary:hover {
+    color: var(--light);
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+    .navbar.sticky-top {
+    top: -100px;
+    transition: .5s;
+}
+
+.navbar .navbar-brand,
+.navbar a.btn {
+    height: 80px
+}
+
+.navbar .navbar-nav .nav-link {
+    margin-right: 35px;
+    padding: 25px 0;
+    color: var(--dark);
+    font-size: 18px;
+    font-weight: 500;
+    outline: none;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav .nav-link  {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar .navbar-nav {
+        border-top: 1px solid #EEEEEE;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;/* Strong and versatile serif font */
+    /* font-size: 50px; Slightly larger font size for impact */
+    color: #2C3E50; /* A deep blue-gray color for a sophisticated look */
+    font-weight: 700; /* Bold font for emphasis */
+    /* line-height: 1.2; Slightly reduce line height for compactness */
+    /* margin-bottom: 20px; Space below the heading */
+    text-transform: uppercase; /* Transform text to uppercase for a strong statement */
+    letter-spacing: 1.5px; /* Increase letter spacing for better readability */
+}
+
+
+.gradient-text {
+            font-family: 'Lobster', cursive;
+            font-size: 42px; /* Adjust font size as needed */
+            background: linear-gradient(90deg, #056f9c, #1efff8); /* Define the gradient colors */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+       
+/* new */
+/* styles.css */
+
+
+
+
+
+   </style>
+    
+  </head>
+
+<body>
+  <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+   
+</div>
+<!-- Spinner End -->
+
+   <div class="container-fluid px-0" style="background-color: #050C9C;" id="navbar">
+    <div class="row g-0 d-none d-lg-flex">
+        <!-- Left side with social media links -->
+        <div class="col-lg-6 ps-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+                <span>Follow Us:</span>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-link text-light" th:href="@{https://www.google.com/maps/@8.5762071,76.8606208,13z?authuser=0&entry=ttu}"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Right side with admin icon -->
+        <div class="col-lg-6 pe-5 text-end">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+               <a class="btn btn-link text-light" th:href="@{/admin/login}"><i class="fas fa-user-cog"></i></a> <!-- Admin icon -->
+            </div>
+        </div>
+    </div>
+</div>
+  
+   <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+   
+   
+   
+    <a th:href="@{/}" class="navbar-brand ps-5 me-0">
+   
+   
+   
+    <img src="assets/images/logo.png" alt="" width="290px" height="75px">
+   
+   
+   
+    </a>
+   
+   
+   
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+   
+   
+   
+    <span class="navbar-toggler-icon"></span>
+   
+   
+   
+    </button>
+   
+   
+   
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+   
+   
+   
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+   
+   
+   
+    <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+   
+   
+   
+    <a th:href="@{/about}" class="nav-item nav-link">About</a>
+   
+    <div class="nav-item dropdown">
+   
+   
+   
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tourism</a>
+   
+   
+   
+    <div class="dropdown-menu m-0">
+   
+   
+   
+    <a th:href="@{/tourism}" class="dropdown-item">Tourism</a>
+   
+   
+   
+    <a th:href="@{/touristsport}" class="dropdown-item">Tourist Spots</a>
+   
+   
+   
+    <a th:href="@{/hotel}" class="dropdown-item">Hotels</a>
+   
+   
+   
+    <a th:href="@{/Theater}" class="dropdown-item">Theater</a>
+   
+   
+   
+    <a th:href="@{/ShoppingCenters}" class="dropdown-item">Shopping Centers</a>
+    
+    </div>
+   
+   
+   
+    </div>
+   
+    <div class="nav-item dropdown">
+   
+   
+   
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Education</a>
+   
+   
+   
+    <div class="dropdown-menu m-0">
+   
+   
+   
+    <a th:href="@{/education}" class="dropdown-item">Education </a>
+   
+   
+    <a th:href="@{/schools}" class="dropdown-item">Schools </a>
+   
+   
+    <a th:href="@{/colleges}" class="dropdown-item"> Universities</a>
+   
+   
+    <a th:href="@{/tsd}" class="dropdown-item">Training & Skill Development</a>
+   
+   
+    <a th:href="@{/education}" class="dropdown-item">Library</a>
+   
+    </div> 
+    </div>
+
+    <a th:href="@{/transport}" class="nav-item nav-link">Transportation</a>
+   
+   
+    <a th:href="@{/hospital}" class="nav-item nav-link">Hospitality</a>
+   
+   
+    <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
+   
+    <div class="nav-item dropdown" >
+   
+   
+   
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+   
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px;"></a> 
+
+    <div class="dropdown-menu m-0">
+   
+    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+   
+    </div>
+   
+  
+    </div>
+    </div>
+    </div>
+   </nav>
+    </div>
+    </nav>
+  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- <h6>Digital Media Agency</h6> -->
+                    <h1 class="gradient-text">Welcome to Education</h1><br>
+                    <p style="text-align: justify;font-size: 20px;color: #080a2f;font-family: Georgia, 'Times New Roman', Times, serif;">Explore Trivandrum's vibrant education landscape, featuring top schools,
+                       renowned universities, esteemed colleges, advanced training and skill development
+                        centers, and a rich library network.Education is the cornerstone of personal
+                         and societal growth, serving as a powerful tool that shapes minds, builds character,
+                          and opens doors to opportunities. It empowers individuals with knowledge, critical 
+                          thinking skills, and the ability to adapt to a constantly changing world.
+                           Through education, people gain the capacity to make informed decisions, 
+                           solve problems, and contribute positively to their communities. </p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/back.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="about" class="about section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+                <img src="assets/images/about1.gif" alt="">
+              </div>
+            </div>
+            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+              <div class="about-right-content">
+                <div class="section-heading">
+                  <h6 style="font-size: 35px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">About Us</h6>
+                  <h4 style="font-size:30px ;font-family: 'Times New Roman', Times, serif;">Education <em>Hub</em></h4>
+                  <div class="line-dec"></div>
+                </div>
+                <p style="color: black; font-size: 18px;text-align: justify;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" >Welcome to the educational hub of Smart Metropolis Trivandrum, where we are dedicated
+                   to unraveling the complexities and treasures of Kerala's capital city. Our mission is
+                    to empower residents and visitors alike with knowledge that enriches their urban experience.
+                     Through engaging content and interactive resources
+                  We aim to illuminate Trivandrum's past, present, and future, 
+                  offering insights into its vibrant culture, innovative advancements, 
+                  and practical urban living tips. Join us as we explore and educate, 
+                  fostering a community of informed and inspired individuals ready to navigate 
+                  and thrive in Trivandrum.</p>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="skill-item first-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
+                     
+                      </div>
+                    </div>
+                  </div>
+                 
+                 
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="services" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h6>Our Services</h6>
+            <h4>Schools in <em>Trivandrum</em></h4>
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="naccs">
+            <div class="grid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="menu">
+                    <div class="first-thumb active">
+                      <div class="thumb">
+                        <span class="icon"><img src="assets/images/icon1.png" alt=""></span>
+                       Christ Nagar
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/school.png" alt=""></span>
+                        Sarvodhaya Vidhyalaya School
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/university.png" alt=""></span>
+                        Trivandrum International
+                      </div>
+                    </div>
+                    <div>
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/schools.png" alt=""></span>
+                       Holy Angels 
+                      </div>
+                    </div>
+                    <div class="last-thumb">
+                      <div class="thumb">                 
+                        <span class="icon"><img src="assets/images/openbook.png" alt=""></span>
+                        St Joseph School
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-lg-12">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Christ Nagar School</h4>
+                                <p style="color: #080a2f;text-align: justify;">Christ Nagar Higher Secondary school started in 1976 as a private English Medium School in Trivandrum, India,
+                                   recognised by the state government of Kerala as a minority educational institution. In 2002, Christ Nagar High
+                                    School was upgraded to higher secondary level. In 2023, due to financial issues the school decided to close its
+                                     higher secondary education.Here are the key facilities provided by Christ Nagar School in Trivandrum:</p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i> Spacious Classrooms</span> <span><i class="fa fa-check"></i> Science Laboratories</span> <span><i class="fa fa-check"></i> Library</span>
+                                  <span><i class="fa fa-check"></i> Computer Lab</span> <span><i class="fa fa-check"></i> Sports Facilities</span> <span><i class="fa fa-check"></i>Music and Art Rooms</span></div>
+                               
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="assets/images/christnagar.png" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Sarvodhaya Vidhyalaya </h4>
+                                <p style="color: #080a2f;text-align: justify;">Sarvodaya Vidyalaya in Trivandrum is a well-known educational institution recognized for its commitment to academic excellence and holistic development.
+                                   Located in the peaceful surroundings of Nalanchira, the school offers a nurturing environment for students from
+                                    kindergarten to higher secondary levels. With a strong emphasis on values, discipline, and extracurricular
+                                     activities</p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i> Spacious Classrooms</span> <span><i class="fa fa-check"></i> Science Laboratories</span> <span><i class="fa fa-check"></i> Library</span>
+                                  <span><i class="fa fa-check"></i>  Computer Lab</span> <span><i class="fa fa-check"></i> Sports Facilities</span> <span><i class="fa fa-check"></i>Music and Art Rooms</span></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="assets/images/sarvodhaya.jpg" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Trivandrum International School</h4>
+                                <p style="color: #080a2f;text-align: justify;">Trivandrum International School, commonly known as TRINS, is a prestigious 
+                                  educational institution located on the outskirts of Thiruvananthapuram, Kerala.
+                                   Established with a vision of providing world-class education, the school follows
+                                    an international curriculum, blending academic rigor with a focus on creativity,
+                                     critical thinking, and global awareness. TRINS offers state-of-the-art facilities,
+                                      a diverse student community, and a wide range of extracurricular activities, ensuring a well-rounded education. </p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i>  Computer Lab</span> <span><i class="fa fa-check"></i> Sports Facilities</span>Library <span><i class="fa fa-check"></i></span>
+                                  <span><i class="fa fa-check"></i>Science Laboratories</span> <span><i class="fa fa-check"></i> Spacious Classrooms</span> <span><i class="fa fa-check"></i> Music and Arts Rooms</span></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="assets/images/TrinsInternational.jpeg" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>Holy Angels Trivandrum</h4>
+                                <p style="color: #080a2f;text-align: justify;">Holy Angels' School in Thiruvananthapuram is a renowned educational institution with 
+                                  a rich history of academic excellence and character development. Established by the 
+                                  Congregation of the Carmelite Religious, the school provides education from kindergarten
+                                   through higher secondary levels, with a strong emphasis on values, discipline, and holistic
+                                    growth. Known for its dedicated faculty and supportive learning environment, Holy Angels'
+                                     School encourages students to excel academically while also participating in various extracurricular activities. </p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i> Computer Lab</span> <span><i class="fa fa-check"></i>  Sports Facilities</span> <span><i class="fa fa-check"></i> Library</span>
+                                  <span><i class="fa fa-check"></i>Science Laboratories</span> <span><i class="fa fa-check"></i> Spacious Classrooms</span> <span><i class="fa fa-check"></i>Music and Art Rooms</span></div>   
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="assets/images/holyangelss.jpg" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="thumb">
+                          <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                              <div class="left-text">
+                                <h4>St Joseph School Trivandrum</h4>
+                                <p style="color: #080a2f;text-align: justify;">St. Joseph's School in Thiruvananthapuram is a well-established educational institution known
+                                   for its strong academic foundation and value-based education. Run by the Jesuit Fathers, 
+                                   the school offers education from the primary to higher secondary levels, focusing on the 
+                                   all-round development of students. With a dedicated faculty and a nurturing environment,
+                                    St. Joseph's School encourages excellence in academics, sports, and extracurricular activities. </p>
+                                <div class="ticks-list"><span><i class="fa fa-check"></i>Music and Art Rooms</span> <span><i class="fa fa-check"></i>  Computer Lab</span> <span><i class="fa fa-check"></i>  Sports Facilities</span>
+                                  <span><i class="fa fa-check"></i> Library</span> <span><i class="fa fa-check"></i> Spacious Classrooms</span> <span><i class="fa fa-check"></i> Science Laboratories</span></div>              
+                              </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                              <div class="right-image">
+                                <img src="assets/images/stjoseph.jpg" alt="">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>          
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="portfolio" class="our-portfolio section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+            <h1>Universities</h1>
+          
+            <div class="line-dec"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="loop owl-carousel">
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/university1.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>University College, Trivandrum</h4>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/marivanious.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>Mar Ivanios College</h4>               
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/cet.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>College of Engineering,Tvm</h4>                
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/allsaints.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>All Saints' College</h4>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/stxavier.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>St. Xavier's College, Thumba</h4>                  
+                </div>
+              </div>
+              </a>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="blog" class="blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 offset-lg-4  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="section-heading">
+            <h3>Training Skill and Development Centers</h3>
+           
+            <div class="line-dec"></div>
+          </div>
+        </div>
+        <div class="col-lg-6 show-up wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="blog-post">
+            <div class="thumb">
+              <a href="#"><img src="assets/images/caddesk.jpg" alt=""></a>
+            </div>
+            <div class="down-content">
+              <span class="category">CADDesk Trivandrum</span>
+              <p style="color: #080a2f;text-align: justify;">CADDesk in Trivandrum is a leading training center specializing in
+                 computer-aided design (CAD) and related software courses. Known for 
+                 its industry-relevant curriculum and experienced instructors, CADDesk 
+                 offers training programs in various CAD software, including AutoCAD,
+                  Revit, and SolidWorks, catering to students, engineers, and professionals.
+                  The institute provides hands-on learning experiences, ensuring that 
+                  participants gain practical skills and knowledge that are directly 
+                  applicable to real-world projects. With its focus on quality education
+                   and skill development, CADDesk has become a preferred choice for those
+                    looking to enhance their expertise in CAD and design technologies in Trivandrum. </p>         
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+          <div class="blog-posts">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="post-item">
+                  <div class="thumb">
+                    <a href="#"><img src="assets/images/nsti1.png" alt=""></a>
+                  </div>
+                  <div class="right-content">
+                    <span class="category">NSTI W Trivandrum</span>            
+                    <p style="color: #080a2f;text-align: justify;">National Skill Training Institute in Trivandrum is a premier institution
+                       dedicated to advanced skill development and vocational training. It offers 
+                       specialized programs in various technical trades, aiming to equip students
+                        and professionals with the skills. </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="post-item">
+                  <div class="thumb">
+                    <a href="#"><img src="assets/images/itichackai.jpg" alt=""></a>
+                  </div>
+                  <div class="right-content">
+                    <span class="category">Govt ITI Chackai</span>                 
+                    <p style="color: black;text-align: justify;">Govt ITI Chakai in Trivandrum is a  industrial
+                       training institute  provides vocational education and skill 
+                       development.Offering a technical courses in trades such as electrician,
+                        fitter, welder, the institute is dedicated to equipping students with practical.</p>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <div id="portfolio" class="our-portfolio section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+            <h1>Libraries</h1>
+          
+            <div class="line-dec"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
+      <div class="row">
+        <div class="col-lg-12">
+         <div class="loop owl-carousel"> 
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/statelibrary.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>State Central Library</h4>                
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/universitylib.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>University Library</h4>
+                </div>
+              </div>
+              </a>  
+            </div>
+            <div class="item">
+              <a href="#">
+                <div class="portfolio-item">
+                <div class="thumb">
+                  <img src="assets/images/sreenarayana.jpg" alt="">
+                </div>
+                <div class="down-content">
+                  <h4>Sree Narayana Memorial </h4>                  
+                </div>
+              </div>
+              </a>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="ftco-footer ftco-section img" style="background-color: #8B93FF;" >
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-3">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Smart Metropolis</h2>
+            <p style="text-align: justify;">Discover the heart of Kerala at Trivandrum, where tradition meets modernity amidst the lush landscapes of India's southwestern coast.</p>
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+              <li class="ftco-animate"><a href="#"><span class="fab fa-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="fab fa-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="fab fa-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="ftco-footer-widget mb-4 ml-md-5">
+            <h2 class="ftco-heading-2">Main Links</h2>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="py-2 d-block">Home</a></li>
+              <li><a href="about.html" class="py-2 d-block">About</a></li>
+              <li><a href="tourism.html" class="py-2 d-block">Tourism</a></li>
+              <li><a href="transport.html" class="py-2 d-block">Transport</a></li>
+              <li><a href="hospital.html" class="py-2 d-block">Hospital</a></li>
+              <li><a href="contact.html" class="py-2 d-block">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Tourism</h2>
+            <ul class="list-unstyled">
+              <li><a href="tourism.html" class="py-2 d-block">Tourism</a></li>
+              <li><a href="TouristSpot.html" class="py-2 d-block">Tourism Spots</a></li>
+              <li><a href="hotel.html" class="py-2 d-block">Hotels</a></li>
+              <li><a href="Theater.html" class="py-2 d-block">Theater</a></li>
+              <li><a href="ShoppingCenters.html" class="py-2 d-block">Shopping Centers</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Education</h2>
+            <ul class="list-unstyled">
+              <li><a href="school.html" class="py-2 d-block">School</a></li>
+              <li><a href="university.html" class="py-2 d-block">University</a></li>
+              <li><a href="skill-development.html" class="py-2 d-block">Skill & Development</a></li>
+              <li><a href="library.html" class="py-2 d-block">Library</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Additional Links</h2>
+            <ul class="list-unstyled">
+              <li><a href="location-finding.html" class="py-2 d-block">Location Finding</a></li>
+              <li><a href="language-translator.html" class="py-2 d-block">Language Translator</a></li>
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 " >
+          <p style="text-align: center;">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Smart Metropolis</p>
+        </div>
+      </div>
+    </div>    
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('searchBar').addEventListener('input', function () {
+            let filter = this.value.toUpperCase();
+            let contentDivs = document.querySelectorAll('.content');
+    
+            contentDivs.forEach(function (div) {
+                let text = div.textContent || div.innerText;
+                if (text.toUpperCase().indexOf(filter) > -1) {
+                    div.classList.remove('hidden');
+                } else {
+                    div.classList.add('hidden');
+                }
+            });
+        });
+    });
+    
+</script>
+ 
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+><i class="bi bi-arrow-up"></i
+></a>
+
+
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/custom.js"></script>
+  
+  
+  
+
+</body>
+</html>

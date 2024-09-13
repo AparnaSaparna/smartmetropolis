@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Metropolis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+body {
+    background: #fff;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Maximum width for the container */
+}
+
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px; /* Maximum width for the main content */
+}
+
+.form-wrapper {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+}
+
+.form-image {
+    flex: 0 0 40%; /* Make the image cover 40% of the width */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 500px; /* Optional: limit the height to prevent the image from becoming too tall */
+    object-fit: cover; /* Cover the container proportionally */
+    margin-right: 20px; /* Space between image and form */
+    border-radius: 10px;
+   
+}
+
+.form-container {
+    flex: 1; /* Make the form cover the right section */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px; /* Maximum width for the form */
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #050C9C;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #050C9C;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+    padding: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #050C9C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #040b80;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <div class="form-wrapper">
+                <img src="https://static.vecteezy.com/system/resources/previews/003/524/648/non_2x/happy-tourist-traveling-for-holiday-free-vector.jpg" alt="Tourist Place" class="form-image"/>
+                <div class="form-container">
+                    <h1>Edit Tourist Place</h1>
+                      <form th:action="@{/update_hotel}" th:object="${hotel}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:name="*{id}" th:value="${hotel.id}" />
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" />
+
+    <label for="description">Description:</label>
+    <input type="text" id="description" th:field="*{description}" />
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" th:field="*{location}" />
+
+    <label for="contact">Contact:</label>
+    <input type="text" id="contact" th:field="*{contact}" />
+
+    <label for="roomTypes">Room Types:</label>
+    <input type="text" id="roomTypes" th:field="*{roomTypes}" />
+
+    <label for="priceRange">Price Range:</label>
+    <input type="text" id="priceRange" th:field="*{priceRange}" />
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" />
+
+    <button type="submit">Save</button>
+</form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

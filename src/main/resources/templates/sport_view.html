@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Metropolis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <style>
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #f4f7fa;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 100%;
+    max-width: 1600px; /* Increased max width of container */
+    background: #f4f7fa;
+    padding: 20px;
+}
+
+.main-content {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px; /* Increased max width of content */
+    margin: 20px 0;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+thead {
+    background-color: #050C9C;
+    color: #ffffff;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+img {
+    max-width: 100%; /* Fit within table cells */
+    height: auto;
+}
+
+/* Ensure both buttons have the same size */
+.btn-edit, .btn-delete {
+    display: inline-flex; /* Ensures buttons behave consistently */
+    align-items: center; /* Centers text vertically */
+    justify-content: center; /* Centers text horizontally */
+    padding: 10px 20px; /* Consistent padding */
+    width: 120px; /* Fixed width */
+    height: 40px; /* Fixed height */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px; /* Font size */
+    line-height: 1; /* Ensures text alignment */
+}
+
+.btn-edit {
+    background-color: #4CAF50; /* Green for edit button */
+}
+
+.btn-delete {
+    background-color: #f44336; /* Red for delete button */
+}
+
+.btn-edit:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.btn-delete:hover {
+    background-color: #e53935; /* Darker red on hover */
+}
+
+a.btn-edit, a.btn-delete {
+    text-decoration: none;
+    color: #fff;
+}
+ .btn-add {
+            background-color: #87CEEB; /* Sky blue color */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px; /* Padding for button size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-align: center; /* Center text */
+            text-decoration: none; /* Remove underline from text */
+            display: inline-block; /* Inline-block display */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            position: absolute; /* Absolute positioning */
+            right: 20px; /* Distance from the right edge */
+            top: 20px; /* Distance from the top edge */
+        }
+    .btn-add:hover {
+        background-color: #00BFFF; /* Darker sky blue background on hover */
+    }
+
+ 
+        .btn-back {
+            background-color: #007bff; /* Blue background color */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px; /* Padding for button size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-align: center; /* Center text */
+            text-decoration: none; /* Remove underline from text */
+            display: inline-block; /* Inline-block display */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            position: absolute; /* Absolute positioning */
+            left: 20px; /* Distance from the left edge */
+            top: 20px; /* Distance from the top edge */
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3; /* Darker blue background on hover */
+        }
+              .dashboard-title {
+            text-align: center; /* Center align the title */
+            font-size: 2rem; /* Larger font size */
+            font-weight: 700; /* Bold text */
+            color: #050C9C; /* Theme color */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+            margin: 0; /* Remove default margin */
+            padding: 10px 0; /* Padding for spacing */
+        }
+        
+    </style>
+</head>
+<body>
+ <div class="container">
+        <div class="main-content">
+            <div class="main-top">
+                <a href="/add_sport" class="btn btn-add">Add</a>
+                <a th:href="@{/admin-dashboard}" class="btn btn-back">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
+            <h1 class="dashboard-title">List of Schools</h1>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Address</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="sport : ${sports}">
+                            <td th:text="${sport.id}">1</td>
+                            <td th:text="${sport.name}">John Doe</td>
+                            <td th:text="${sport.description}">Description here</td>
+                            <td th:text="${sport.address}">123 Main St</td>
+                            <td th:text="${sport.contact}">(555) 123-4567</td>
+                            <td th:text="${sport.email}">johndoe@example.com</td>
+                            <td><img th:src="@{'/uploads/' + ${sport.imagePath}}" alt="Sport Image" width="50"></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a th:href="@{/edit_sport(id=${sport.id})}" class="btn btn-edit">Edit</a>
+                                    <form th:action="@{/delete_sport}" method="post" style="display:inline;">
+                                        <input type="hidden" name="id" th:value="${sport.id}">
+                                        <button type="submit" class="btn btn-delete">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

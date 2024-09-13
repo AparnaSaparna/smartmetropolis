@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SmartMetropolis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="tourism/animate.css">
+    
+    <link rel="stylesheet" href="tourism/owl.carousel.min.css">
+    <link rel="stylesheet" href="tourism/owl.theme.default.min.css">
+    <link rel="stylesheet" href="tourism/magnific-popup.css">
+
+    <link rel="stylesheet" href="tourism/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="tourism/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="tourism/flaticon.css">
+    <link rel="stylesheet" href="tourism/style.css">
+    <link rel="stylesheet" href="path/to/font-awesome/tourism/all.min.css">
+
+    
+    <style>
+      .modal {
+         display: none;
+         position: fixed;
+         z-index: 1;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         overflow: auto;
+         background-color: rgb(0, 0, 0);
+         background-color: rgba(0, 0, 0, 0.4);
+     }
+
+     .modal-content {
+         background-color: #fefefe;
+         margin: 5% auto;
+         padding: 20px;
+         border: 1px solid #888;
+         width: 80%;
+         position: relative;
+     }
+
+     .close {
+         color: #aaa;
+         float: right;
+         font-size: 28px;
+         font-weight: bold;
+     }
+
+     .close:hover,
+     .close:focus {
+         color: black;
+         text-decoration: none;
+         cursor: pointer;
+     }
+
+     .fade-images {
+         position: relative;
+         width: 100%;
+         height: 300px; /* Adjust as needed */
+     }
+
+     .fade-images img {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         opacity: 0;
+         transition: opacity 1s ease-in-out;
+     }
+
+     .fade-images img.active {
+         opacity: 1;
+     }
+    .nav-item{
+      padding-left: 30px;
+    }
+  </style>
+
+
+</head>
+<body>
+   <div class="container-fluid  px-0" style="background-color: #050C9C;">
+      <div class="row g-0 d-none d-lg-flex">
+          <div class="col-lg-6 ps-5 text-start">
+              <div class="h-100 d-inline-flex align-items-center text-white">
+                  <!-- <a class="btn btn-link text-light" href=""></a>
+                  <img src="img/searching.png" alt="" width="40px" height="40px"></a> -->
+                  <span class="container-fluid" style="margin-left:50px">Follow Us:</span>
+                  <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                  <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+                  <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                  <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                  <a class="btn btn-link text-light" th:href="@{/map}"><i class="fas fa-map-marker-alt"></i></a>
+              </div>
+           
+          </div>
+          
+      </div>
+  </div>
+  <!-- Topbar End -->
+
+
+  <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+   <a th:href="@{/}" class="navbar-brand ps-5 me-0">
+       <img src="img/logo.png" alt="" width="290px" height="75px">
+   </a>
+   <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+       <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarCollapse"style="margin-left:230px">
+       <div class="navbar-nav ms-auto p-4 p-lg-0">
+           <a th:href="@{/}" class="nav-item nav-link ">Home</a>
+           <a th:href="@{/about}" class="nav-item nav-link">About</a>
+           
+           <div class="nav-item dropdown">
+               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tourism</a>
+               <div class="dropdown-menu m-0">
+                   <a th:href="@{/tourism}" class="dropdown-item">Tourism</a>
+                   <a th:href="@{/TouristSpot}" class="dropdown-item">Tourist Spots</a>
+                   <a th:href="@{/hotel}" class="dropdown-item">Hotels</a>
+                   <a th:href="@{/Theater}" class="dropdown-item">Theater</a>
+                   <a th:href="@{/ShoppingCenters}" class="dropdown-item">Shopping Centers</a>
+               </div>
+           </div>
+          
+           <div class="nav-item dropdown">
+               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Education</a>
+               <div class="dropdown-menu m-0">
+                   <a th:href="@{/education}" class="dropdown-item">Education </a>
+                   <a th:href="@{/schools}" class="dropdown-item">Schools </a>
+                   <a th:href="@{/colleges}" class="dropdown-item"> Universities</a>
+                   <a th:href="@{/tsd}" class="dropdown-item">Training & Skill Development</a>
+                   <a th:href="@{/education}" class="dropdown-item">Library</a>
+                   
+               </div>
+           </div>
+           
+           <a th:href="@{/transport}" class="nav-item nav-link">Transportation</a>
+           <a th:href="@{/hospital}" class="nav-item nav-link">Hospitality</a>
+           <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
+       </div>
+   </div>
+</nav>
+
+          
+       </div>
+   </nav>
+   <!-- Navbar End -->
+<section class="hero-wrap hero-wrap-2 js-fullheight">
+   <div class="overlay"></div>
+   <div class="container">
+     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+       <div class="col-md-9 ftco-animate pb-5 text-center">
+         <p class="breadcrumbs">
+           <span class="mr-2">
+             <a href="index.html">Home <i class="fa fa-chevron-right"></i></a>
+           </span>
+           <span>Tourist Spot <i class="fa fa-chevron-right"></i></span>
+         </p>
+         <h1 class="mb-0 bread">Tourist Spot</h1>
+       </div>
+     </div>
+   </div>
+ </section>
+ 
+ <style>
+   .hero-wrap {
+     position: relative;
+     width: 100%;
+     height: 100vh;
+     background-size: cover;
+     background-position: center center;
+     animation: bgAnimation 16s infinite;
+   }
+ 
+   @keyframes bgAnimation {
+     0% {
+       background-image: url('img/tm1.jpg');
+     }
+     12.5% {
+       background-image: url('img/tm2.jpg');
+     }
+     25% {
+       background-image: url('img/tm3.jpg');
+     }
+     37.5% {
+       background-image: url('img/tm4.jpg');
+     }
+     50% {
+       background-image: url('img/tm5.jpg');
+     }
+     62.5% {
+       background-image: url('img/tm6.jpg');
+     }
+     75% {
+       background-image: url('img/tm7.jpg');
+     }
+     87.5% {
+       background-image: url('img/tm8.jpg');
+     }
+     100% {
+       background-image: url('img/tm1.jpg');
+     }
+   }
+ 
+   .overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: rgba(0, 0, 0, 0.5);
+   }
+ 
+   .js-fullheight {
+     height: 100vh;
+   }
+ </style>
+ 
+
+<section class="ftco-section">
+  <div class="container">
+     <div class="row">
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/padtemple.jpg);" onclick="openModal('modal1')">
+                 <span class="price">Sree Padmanabhaswamy Temple</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">3:45 AM - 12:00 PM, 5:00 PM - 7:15 PM</span>
+                 
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> West Nada, East Fort, Thiruvananthapuram, Kerala 695023</p>
+                  
+                 <ul>
+                  <li><span class="fas fa-water"></span> Pond</li>
+                  <li><span class="fas fa-landmark"></span> Museum</li>
+                  <li><span class="fas fa-train"></span> Railway</li>
+                  <li><span class="fas fa-plane"></span> Airport</li>
+              </ul>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/kovalamm.jpg);" onclick="openModal('modal2')">
+                 <span class="price">Kovalam Beach</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">12:00 am – 11:59 pm</span>
+             
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Kovalam, Thiruvananthapuram, Kerala, 695527</p>
+                 <br>
+               <ul>
+                  <li><span class="fas fa-plane"></span> Airline</li>
+                  <li><span class="fas fa-train"></span> Railway</li>
+                  <li><span class="fas fa-parachute-box"></span> Parasailing</li>
+                  <li><span class="fas fa-umbrella-beach"></span> Beach</li>
+               </ul>
+              </div>
+           </div>
+        </div>
+
+        
+        <div class="col-md-4 ftco-animate">
+         <div class="project-wrap">
+            <a href="#" class="img" style="background-image: url(img/museum.jpg);" onclick="openModal('modal3')">
+               <span class="price">Trivandrum Museum</span>
+            </a>
+            <div class="text p-4">
+               <span class="days">10:00 AM - 5:00 PM</span>
+             
+               <p class="location"><span class="fa fa-map-marker text-dark"></span> Near Museum Junction, Thiruvananthapuram</p>
+               <br>
+               <ul>
+                <li><span class="fas fa-university"></span> University</li>
+                <li><span class="fas fa-plane"></span> Airport</li>
+                <li><span class="fas fa-train"></span> Railway</li>
+                <li><span class="fas fa-landmark"></span> Palace</li>
+               </ul>
+            </div>
+         </div>
+      </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/azhimalatemple.jpg);" onclick="openModal('modal4')">
+                 <span class="price">Azhimala Shiva Temple</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">5.50 AM - 11:00 PM, 8:00 PM - 7:00 PM</span>
+                
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span>Poovar to Vizhinjam road , Azhimala Temple, Kerala 695501</p>
+                 <ul>
+                  <li><span class="fas fa-plane"></span> Flight</li>
+                  <li><span class="fas fa-train"></span> Railway</li>
+                  <li><span class="fas fa-theater-masks"></span> Theater</li>
+                  <li><span class="fas fa-landmark"></span> Museum</li>                  
+                 </ul>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/varkala.jpg);" onclick="openModal('modal5')">
+                 <span class="price">Varkala Beach Clif</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">24 Hours</span>
+            
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Varkala, Kerala 695141, India</p>
+                 <br>
+                 <ul>
+                  <li><span class="fas fa-hiking"></span> Trekking</li>
+                  <li><span class="fas fa-umbrella-beach"></span> Beach</li>
+                  <li><span class="fas fa-coffee"></span> Cafe</li>
+                  <li><span class="fas fa-helicopter"></span> Helipad</li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/poovar.jpg);" onclick="openModal('modal6')">
+                 <span class="price">Poovar island</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">9:00 AM - 6:00 PM</span>
+          
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Pozhiyoor , Trivandrum - 695513,
+                  Kerala</p>
+                 <ul>
+                  <li><span class="fas fa-home"></span> Village</li>
+                  <li><span class="fas fa-church"></span> Church</li>
+                  <li><span class="fas fa-water"></span> Waterfalls</li>
+                  <li><span class="fas fa-anchor"></span> Seaport</li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/po.jpg);" onclick="openModal('modal7')">
+                 <span class="price">Ponmudi</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">8:00 AM - 5:00 PM</span>
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Ponmudi Hill Station in Aanamkudi,Thiruvananthapuram </p>
+                 <ul>
+                 <li><span class="fas fa-landmark"></span> Palace</li>
+                 <li><span class="fas fa-train"></span> Railway</li>
+                 <li><span class="fas fa-bus"></span>Transport</li>
+                 <li><span class="fas fa-water"></span> Waterfalls</li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/magic.png);" onclick="openModal('modal8')">
+                 <span class="price">Magic Planet</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">10:00 AM - 5:00 PM</span>
+               
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Magic Planet Sainik School , Kazhakkoottam, Kerala 695585</p>
+                 <ul>
+                  <li><span class="fas fa-water"></span> Lake</li>
+                  <li><span class="fas fa-shuttle-van"></span> Transportation</li>
+                  <li><span class="fas fa-umbrella-beach"></span> Beach</li>
+                  <li><span class="fas fa-place-of-worship"></span> Temple</li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+
+        <div class="col-md-4 ftco-animate">
+           <div class="project-wrap">
+              <a href="#" class="img" style="background-image: url(img/kanakakunnu.jpg);" onclick="openModal('modal9')">
+                 <span class="price">Kanakakunnu Palace</span>
+              </a>
+              <div class="text p-4">
+                 <span class="days">10:00 AM - 5:00 PM</span>
+                 <p class="location"><span class="fa fa-map-marker text-dark"></span> Kanakakunnu Palace, Thiruvananthapuram,695033</p>
+                 <ul>
+                  <li><span class="fas fa-landmark"></span> Museum</li>
+                  <li><span class="fas fa-place-of-worship"></span> Temple</li>
+                  <li><span class="fas fa-train"></span> Railway</li>
+                  <li><span class="fas fa-shuttle-van"></span> Transport</li>
+                 </ul>
+              </div>
+           </div>
+        </div>
+        <!-- Add more destinations as needed -->
+     </div>
+     <div class="row mt-5">
+        <div class="col text-center">
+           <div class="block-27">
+              <ul>
+                 <li><a href="#">&lt;</a></li>
+                 <li class="active"><span>1</span></li>
+                 <li><a href="#">2</a></li>
+                 <li><a href="#">3</a></li>
+                 <li><a href="#">4</a></li>
+                 <li><a href="#">5</a></li>
+                 <li><a href="#">&gt;</a></li>
+              </ul>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
+
+<!-- Modals -->
+<div id="modal1" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal1')">&times;</span>
+       <h2>Sree Padmanabhaswamy Temple</h2>
+       
+       <div class="fade-images">
+           <img src="img/p1.jpg" alt="Image 1" class="active">
+           <img src="img/p2.png" alt="Image 2">
+           <img src="img/p3.png" alt="Image 3">
+           <img src="img/p4.png" alt="Image 4">
+       </div>
+       <p>Located at the heart of the city this temple is the landmark of the city.
+         The famous Sree Padmanabha Swamy temple dedicated to Lord Vishnu is run by a trust headed by the erstwhile
+         royal family of Travancore. This temple is one of the 108 holy abodes of Lord Vishnu.
+         Constructed in Dravidian style of architecture the main attraction is the deity of Sree Padmanabhaswamy.
+         The deity is enshrined in a reclining posture on a serpent called Anantha.
+         In the recent past the temple has become popular for its assets which have been valued 90000 crore.
+         The temple has a seven story carved gopuram which is reflected in the sacred tank.
+         Seek blessings of Lord Vishnu and marvel at the architecture of the temple.
+     </p>
+   </div>
+</div>
+
+<div id="modal2" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal2')">&times;</span>
+       <h2>Kovalam Beach</h2>
+       <div class="fade-images">
+         <img src="img/k1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/k2.jpg" alt="Banaue Rice Terraces">
+         <img src="img/k3.jpg" alt="Banaue Rice Terraces">
+         <img src="img/k4.png" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Kovalam is an internationally renowned beach with three adjacent crescent beaches. 
+         It has been a favourite haunt of tourists since the 1930s. A massive rocky promontory on the beach has
+         created a beautiful bay of calm waters ideal for sea bathing. The leisure options at this beach are plenty
+         and diverse. Sunbathing, swimming, herbal body toning massages, special cultural programmes and catamaran 
+         cruising are some of them. The tropical sun acts so fast that one can see the faint blush of coppery tan on 
+         the skin in a matter of minutes. Life on the beach begins late in the day and carries on well into the night. 
+         The beach complex includes a string of budget cottages, Ayurvedic health resorts, convention facilities, shopping 
+         zones, swimming pools, Yoga and Ayurvedic massage centres. Accommodation facilities for tourists at Kovalam 
+         range from five star hotels to budget hotels and the choice of food available at restaurants and cafeterias 
+         range from Continental varieties to South Indian delicacies.</p>
+       
+   </div>
+</div>
+
+<div id="modal3" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal3')">&times;</span>
+       <h2>Thiruvananthapuram Museum</h2>
+       <div class="fade-images">
+         <img src="img/m1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/m2.jpg" alt="Banaue Rice Terraces">
+         <img src="img/m3.jpg" alt="Banaue Rice Terraces">
+         <img src="img/m4.png" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>In the heart of Thiruvananthapuram city lies the great Napier Museum and the Natural History Museum in 
+         the Museum compound. The museum complex also houses the Zoological Park, Art Museum, Art Gallery, Sree 
+         Chithra Enclave, KCS Panicker Gallery, Aquarium and 3D Theatre.Built in the 19th century, it has its own 
+         natural air-conditioning system. It contains a host of historical artefacts including bronze idols, ancient 
+         ornaments, a temple chariot and ivory carvings. People are especially impressed by the Japanese shadow-play 
+         leather that is used to depict the epics of the Mahabharata and Ramayana. Kerala's rich cultural heritage is
+         in full display here. The museum was named after the former Madras Governor General, John Napier. 
+         Also known as Government Art Museum, the architectural style of museum is a mix of Indian, Chinese, 
+         Kerala and Mughal Schools of Architecture.</p>
+       
+   </div>
+</div>
+
+<div id="modal4" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal4')">&times;</span>
+       <h2>Azhimala Shiva Temple</h2>
+       <div class="fade-images">
+         <img src="img/a1.png" alt="Banaue Rice Terraces" class="active">
+         <img src="img/a2.png" alt="Banaue Rice Terraces">
+         <img src="img/a3.png" alt="Banaue Rice Terraces">
+         <img src="img/a4.png" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>In the picturesque hamlet of Azhimala in Vizhinjam, there is a surreal blend of divinity and nature. 
+         While the gorgeous beach and green surroundings invite travellers, the much revered Azhimala Shiva Temple 
+         adds a mystic touch to the place. The temple which is perched on the cliff adjoining the sea is an ancient 
+         one that envelops the whole region in a pious aura. The temple is noted for its 58-ft-tall statue of Lord 
+         Shiva in the Gangadhareswara form, all made in concrete. The massive structure with Shiva's hair flowing in
+          the wind and holding Goddess Ganga has a charm of its own and lends a magnificent appeal to the temple. 
+          The sculpture was created by a 29-year-old artist P. S. Devadathan who is a native of Azhimala</p>
+       
+   </div>
+</div>
+
+<div id="modal5" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal5')">&times;</span>
+       <h2>Varkala Beach Clif</h2>
+       <div class="fade-images">
+         <img src="img/v1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/v2.jpg" alt="Banaue Rice Terraces">
+         <img src="img/v3.jpg" alt="Banaue Rice Terraces">
+         <img src="img/v4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>Varkala Cliff is a famous beachfront which is a massive cluster of old times rock formations. 
+         Varkala Beach is the only place in southern Kerala where cliffs are found adjacent to the Arabian Sea. 
+         This 80 feet high red laterite cliff is unique as it is a veritable blueprint of geological changes from 
+         during the Mio-Pliocene age (1.3 to 25 million years ago). Its sedimentary geo-morphological structure bears 
+         evidence of unique geological features such as changes in the sea and soil structures and even has small fossils
+         embedded in them. The cliffs are also named the 'Warkallai formation' by the Geological Survey of India and 
+         have been declared as a potential Geopark by UNESCO. There are 90 geoparks around the world, but the 
+         Varkala cliff is the first in India. Plans are afoot to declare it as a National Geological Monument by 
+         the Geological Survey of India and ideas have been put forward for its conservation including building a 
+         seawall along the length of the cliff. All mining and quarrying activities in this region are also to be 
+         stopped and the area to be made a litter-free zone. The unique feature of the Varkala cliff is that it 
+         appears as a dramatic horizon that is merging with the Arabian Sea. Papanasam Beach is divided into two 
+         parts -- North Cliff and South Cliff. North Cliff is the most happening part where you'll find most of the 
+         shops, restaurants, and accommodations. South cliff in Varkala, on the other hand, is quiet and untouched 
+         by tourism. To get a 'Varkala Feel' you need to stroll around these cliffs and listen to worldly music being
+          played in the cafes and people calling you out either for a massage or some cheap shopping.</p>
+       
+   </div>
+</div>
+
+<div id="modal6" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal6')">&times;</span>
+       <h2>Poovar Island</h2>
+       <div class="fade-images">
+         <img src="img/poovar1.jpeg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/poovar2.jpeg" alt="Banaue Rice Terraces">
+         <img src="img/poovar3.jpg" alt="Banaue Rice Terraces">
+         <img src="img/poovar4.jpeg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>In the heart of Thiruvananthapuram city lies the great Napier Museum and the Natural History Museum in the Museum compound. The museum complex also houses the Zoological Park, Art Museum, Art Gallery, Sree Chithra Enclave, KCS Panicker Gallery, Aquarium and 3D Theatre. 
+
+         Built in the 19th century, it has its own natural air-conditioning system. It contains a host of historical artefacts including bronze idols, ancient ornaments, a temple chariot and ivory carvings. People are especially impressed by the Japanese shadow-play leather that is used to depict the epics of the Mahabharata and Ramayana.
+         
+         Kerala's rich cultural heritage is in full display here. The museum was named after the former Madras Governor General, John Napier. Also known as Government Art Museum, the architectural style of museum is a mix of Indian, Chinese, Kerala and Mughal Schools of Architecture.</p>
+       
+   </div>
+</div>
+
+<div id="modal7" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal7')">&times;</span>
+       <h2>Ponmudi</h2>
+       <div class="fade-images">
+         <img src="img/pon1.jpeg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/pon2.jpg" alt="Banaue Rice Terraces">
+         <img src="img/pon3.jpeg" alt="Banaue Rice Terraces">
+         <img src="img/pon4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>In the heart of Thiruvananthapuram city lies the great Napier Museum and the Natural History Museum in the Museum compound. The museum complex also houses the Zoological Park, Art Museum, Art Gallery, Sree Chithra Enclave, KCS Panicker Gallery, Aquarium and 3D Theatre. 
+
+         Built in the 19th century, it has its own natural air-conditioning system. It contains a host of historical artefacts including bronze idols, ancient ornaments, a temple chariot and ivory carvings. People are especially impressed by the Japanese shadow-play leather that is used to depict the epics of the Mahabharata and Ramayana.
+         
+         Kerala's rich cultural heritage is in full display here. The museum was named after the former Madras Governor General, John Napier. Also known as Government Art Museum, the architectural style of museum is a mix of Indian, Chinese, Kerala and Mughal Schools of Architecture.</p>
+       
+   </div>
+</div>
+
+<div id="modal8" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal8')">&times;</span>
+       <h2>Magic Planet</h2>
+       <div class="fade-images">
+         <img src="img/magi1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/magi2.jpg" alt="Banaue Rice Terraces">
+         <img src="img/magi3.jpg" alt="Banaue Rice Terraces">
+         <img src="img/magi4.jpg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>In the heart of Thiruvananthapuram city lies the great Napier Museum and the Natural History Museum in the Museum compound. The museum complex also houses the Zoological Park, Art Museum, Art Gallery, Sree Chithra Enclave, KCS Panicker Gallery, Aquarium and 3D Theatre. 
+
+         Built in the 19th century, it has its own natural air-conditioning system. It contains a host of historical artefacts including bronze idols, ancient ornaments, a temple chariot and ivory carvings. People are especially impressed by the Japanese shadow-play leather that is used to depict the epics of the Mahabharata and Ramayana.
+         
+         Kerala's rich cultural heritage is in full display here. The museum was named after the former Madras Governor General, John Napier. Also known as Government Art Museum, the architectural style of museum is a mix of Indian, Chinese, Kerala and Mughal Schools of Architecture.</p>
+       
+   </div>
+</div>
+
+<div id="modal9" class="modal">
+   <div class="modal-content">
+       <span class="close" onclick="closeModal('modal9')">&times;</span>
+       <h2>Kanakakunnu Palace</h2>
+       <div class="fade-images">
+         <img src="img/kana1.jpg" alt="Banaue Rice Terraces" class="active">
+         <img src="img/kana2.jpg" alt="Banaue Rice Terraces">
+         <img src="img/kana3.jpg" alt="Banaue Rice Terraces">
+         <img src="img/kana4.jpeg" alt="Banaue Rice Terraces">
+   
+     </div>
+       <p>In the heart of Thiruvananthapuram city lies the great Napier Museum and the Natural History Museum in the Museum compound. The museum complex also houses the Zoological Park, Art Museum, Art Gallery, Sree Chithra Enclave, KCS Panicker Gallery, Aquarium and 3D Theatre. 
+
+         Built in the 19th century, it has its own natural air-conditioning system. It contains a host of historical artefacts including bronze idols, ancient ornaments, a temple chariot and ivory carvings. People are especially impressed by the Japanese shadow-play leather that is used to depict the epics of the Mahabharata and Ramayana.
+         
+         Kerala's rich cultural heritage is in full display here. The museum was named after the former Madras Governor General, John Napier. Also known as Government Art Museum, the architectural style of museum is a mix of Indian, Chinese, Kerala and Mughal Schools of Architecture.</p>
+       
+   </div>
+</div>
+
+<script>
+   function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+  }
+
+  function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+  }
+
+  function initFadeImages(modalId) {
+      let currentIndex = 0;
+      const images = document.querySelectorAll(`#${modalId} .fade-images img`);
+      const totalImages = images.length;
+
+      function showNextImage() {
+          images[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % totalImages;
+          images[currentIndex].classList.add('active');
+      }
+
+      setInterval(showNextImage, 800); // Change image every 3 seconds
+  }
+
+  // Initialize fade image effects for each modal
+  initFadeImages('modal1');
+  initFadeImages('modal2');
+  initFadeImages('modal3');
+  initFadeImages('modal4');
+  initFadeImages('modal5');
+  initFadeImages('modal6');
+  initFadeImages('modal7');
+  initFadeImages('modal8');
+  initFadeImages('modal9');
+</script>
+<script>
+   function openModal(modalId) {
+       document.getElementById(modalId).style.display = "block";
+   }
+
+   function closeModal(modalId) {
+       document.getElementById(modalId).style.display = "none";
+   }
+</script>
+
+<!--Modal End-->
+
+
+
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url(img/bg_3.jpg);">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md pt-5">
+        <div class="ftco-footer-widget pt-md-5 mb-4">
+          <h2 class="ftco-heading-2">About</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-md pt-5 border-left">
+    <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+      <h2 class="ftco-heading-2">Infromation</h2>
+      <ul class="list-unstyled">
+        <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+        <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+        <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+        <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
+        <li><a href="#" class="py-2 d-block">Refund Policy</a></li>
+        <li><a href="#" class="py-2 d-block">Call Us</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-md pt-5 border-left">
+   <div class="ftco-footer-widget pt-md-5 mb-4">
+      <h2 class="ftco-heading-2">Experience</h2>
+      <ul class="list-unstyled">
+        <li><a href="#" class="py-2 d-block">Adventure</a></li>
+        <li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
+        <li><a href="#" class="py-2 d-block">Beach</a></li>
+        <li><a href="#" class="py-2 d-block">Nature</a></li>
+        <li><a href="#" class="py-2 d-block">Camping</a></li>
+        <li><a href="#" class="py-2 d-block">Party</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-md pt-5 border-left">
+    <div class="ftco-footer-widget pt-md-5 mb-4">
+       <h2 class="ftco-heading-2">Have a Questions?</h2>
+       <div class="block-23 mb-3">
+         <ul>
+           <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+           <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+           <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+       </ul>
+   </div>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+
+    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  </div>
+</div>
+</div>
+</footer>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/tourism.js"></script>
+
+</body>
+</html>

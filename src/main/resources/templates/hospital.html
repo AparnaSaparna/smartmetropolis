@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Smart Metropolis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+<!-- Optional: MDB Bootstrap CSS (if not already included) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.css" rel="stylesheet">
+
+<!-- Your carousel HTML goes here -->
+
+<!-- Required: MDB Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.11.0/mdb.min.js" integrity="sha512-mRJGz6rZm6Mz2NfH9E9I8yFlwFE7ReF5I8EhFjA1m/9Scw81ScSfJNe5GpehIPzdo0zJlrgUZPj1uI2+wTaOgw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <div class="container-fluid  px-0" style="background-color: #050C9C;">
+        <div class="row g-0 d-none d-lg-flex">
+            <div class="col-lg-6 ps-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center text-white">
+                    <!-- <a class="btn btn-link text-light" href=""></a>
+                    <img src="img/searching.png" alt="" width="40px" height="40px"></a> -->
+                    <span>Follow Us:</span>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-link text-light" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-link text-light" th:href="@{/map}"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+             
+            </div>
+             <div class="col-lg-6 pe-5 text-end">
+ <div class="h-100 d-inline-flex align-items-center text-white">
+ <a class="btn btn-link text-light" th:href="@{/admin/login}"><i class="fas fa-user-cog"></i></a> <!-- Admin icon -->
+ </div>
+ </div>
+            
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+        <a th:href="@{/}" class="navbar-brand ps-5 me-0">
+            <img src="img/logo.png" alt="" width="290px" height="75px">
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+                <a th:href="@{/about}" class="nav-item nav-link">About</a>
+                
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tourism</a>
+                    <div class="dropdown-menu m-0">
+                        <a th:href="@{/tourism}" class="dropdown-item">Tourism</a>
+                        <a th:href="@{/TouristSpot}" class="dropdown-item">Tourist Spots</a>
+                        <a th:href="@{/hotel}" class="dropdown-item">Hotels</a>
+                        <a th:href="@{/Theater}" class="dropdown-item">Theater</a>
+                        <a th:href="@{/ShoppingCenters}" class="dropdown-item">Shopping Centers</a>
+                    </div>
+                </div>
+               
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Education</a>
+                    <div class="dropdown-menu m-0">
+                        <a th:href="@{/education}" class="dropdown-item">Education </a>
+                        <a th:href="@{/schools}" class="dropdown-item">Schools </a>
+                        <a th:href="@{/colleges}" class="dropdown-item"> Universities</a>
+                        <a th:href="@{/tsd}" class="dropdown-item">Training & Skill Development</a>
+                        <a th:href="@{/education}" class="dropdown-item">Library</a>
+                        
+                    </div>
+                </div>
+                
+                <a th:href="@{/transport}" class="nav-item nav-link">Transportation</a>
+                <a th:href="@{/hospital}" class="nav-item nav-link">Hospitality</a>
+                <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
+                <div class="nav-item dropdown" >
+ <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+ <img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px;"></a>
+
+ <div class="dropdown-menu m-0">
+
+ <li><a class="dropdown-item" href="/logout">Logout</a></li>
+ </div>
+ </div>
+            </div>
+        </div>
+    </nav>
+    
+               
+            </div>
+        </nav>
+        <!-- Navbar End -->
+    <!-- Navbar End -->
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-2 align-items-center">
+            <!-- <div class="col-lg-5 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="rounded"  data-wow-delay="0.1s" src="https://neotrack.ai/storage/2023/07/NEOTRACK-GPS-TRACKING.webp">
+            </div> -->
+            <div class="col-lg-5 col-md-3 wow fadeInUp" data-wow-delay="0.3s">
+           
+               
+                <h1> Leading Healthcare in the Heart of Trivandrum</h1>
+                <h3 style="color: black;">Comprehensive Healthcare Services</h3>
+                <p>Our Smart Metropolis platform provides comprehensive details about Trivandrum City Hospital. You can access information about hospital departments, specialist doctors, visiting hours, and emergency services.</p>
+   
+               
+                <a class="btn  py-3 px-4" href="#link">Explore More</a>
+               
+            </div>
+            <div class="col-lg-1 col-md-5 wow fadeInUp" data-wow-delay="0.5s">
+                
+            </div>
+             <div class="col-lg-5 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="rounded"  data-wow-delay="0.1s" src="img/hospital.jpg" style="width: 700px; height: 560px;">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold" style="text-align: center;">Our Services</p>
+            <h1 class="display-5 mb-5">Healthcare Services in Trivandrum</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <!-- Placeholder for image if needed -->
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/govt.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Government Hospitals</h4>
+                        <p class="mb-4">Explore government hospitals in Trivandrum offering subsidized healthcare services. Find information on departments, doctors, and patient facilities.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <!-- Placeholder for image if needed -->
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/private.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Private Hospitals</h4>
+                        <p class="mb-4">Discover private hospitals in Trivandrum renowned for specialized treatments and advanced healthcare services. Learn about specialties, booking options, and patient reviews.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <!-- Placeholder for image if needed -->
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/pharmacy.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Clinics and Pharmacies</h4>
+                        <p class="mb-4">Find information on clinics, pharmacies, and healthcare facilities across Trivandrum, including services offered and contact details for easy access.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid facts my-5 py-5" data-parallax="scroll"  data-image-src="https://i.pinimg.com/originals/b9/dc/a6/b9dca60ded276121b3941ee00c75fb4d.gif"></div>
+    <!-- Services Start -->
+       
+<h1 id="link" class="display-6" style="text-align: center;">Best Public Hospitals in Thiruvananthapuram</h1>
+<div id="carouselMultiItemExample" class="carousel slide carousel-dark text-center" data-ride="carousel">
+    <!-- Controls -->
+    <div class="d-flex justify-content-center mb-4">
+        <button class="carousel-control-prev position-relative" type="button" data-target="#carouselMultiItemExample" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next position-relative" type="button" data-target="#carouselMultiItemExample" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+    <!-- Inner -->
+    <div class="carousel-inner py-4">
+        <!-- First item -->
+        <div class="carousel-item active">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipOeGeuSAGZCrTkmkadzXUeEv9uf9EPu1EuvRkRa=s1360-w1360-h1020" class="card-img-top" alt="Trivandrum Medical College"/>
+                            <div class="card-body">
+                                <h5 class="card-title">Trivandrum Medical College</h5>
+                                <br>
+                                 <p class="card-text">
+                                <i class="fas fa-map-marker-alt"></i> 
+                                <a href="https://www.google.com/maps/search/?api=1&query=Trivandrum+Medical+College+Trivandrum+Kerala" target="_blank">
+                                    Location: Trivandrum, Kerala
+                                </a>
+                                <br>
+                                <i class="fas fa-phone-alt"></i> 
+                                <a href="tel:+911234567890">Phone: +91 12345 67890</a>
+                            </p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="https://www.sctimst.ac.in/images/background_image/hospital%20reception.jpg" class="card-img-top" alt="Sree Chitra Tirunal Institute"/>
+                            <div class="card-body">
+                                <h5 class="card-title">Sree Chitra Tirunal Institute For Medical Sciences & Technology</h5>
+                                 <p class="card-text">
+                                <i class="fas fa-map-marker-alt"></i> 
+                                <a href="https://www.google.com/maps/search/?api=1&query=Sree+Chitra+Tirunal+Institute+For+Medical+Sciences+%26+Technology+Thiruvananthapuram" target="_blank">
+                                    Location: Thiruvananthapuram
+                                </a>
+                                <br>
+                                <i class="fas fa-phone-alt"></i> 
+                                <a href="tel:+914712443152">Phone: 0471 244 3152</a>
+                            </p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipNWPD-3aJV-wjcaJUEqPutCIYx0ISIaAKNbBB8f=s1360-w1360-h1020" class="card-img-top" alt="Regional Cancer Centre"/>
+                            <div class="card-body">
+                                <h5 class="card-title">Regional Cancer Centre</h5>
+                                <p class="card-text">
+                                <i class="fas fa-map-marker-alt"></i> 
+                                <a href="https://www.google.com/maps/search/?api=1&query=Regional+Cancer+Centre+Kumarapuram+Trivandrum" target="_blank">
+                                    Location: Kumarapuram, Trivandrum
+                                </a>
+                                <br>
+                                <i class="fas fa-phone-alt"></i> 
+                                <a href="tel:+914712442541">Phone: 0471 244 2541</a>
+                            </p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Second item -->
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipPaBqt5rVQJQ32FRDfsmfUCOPThCwYLNbl0UA2R=s1360-w1360-h1020" class="card-img-top" alt="General Hospital"/>
+                            <div class="card-body">
+                                <h5 class="card-title">General Hospital</h5>
+                               <p class="card-text">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Red+Cross+Road+Near+Vanchiyoor+Thiruvananthapuram" target="_blank">
+                    Location: Red Cross Road, Near Vanchiyoor, Thiruvananthapuram
+                </a>
+                <br>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+914712303870">Phone: 0471 230 3870</a>
+            </p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <div class="card">
+                            <img src="https://files.yappe.in/place/full/district-model-hospital-2174151.webp" class="card-img-top" alt="Card title5"/>
+                            <div class="card-body">
+                                <h5 class="card-title">District Model Hospital</h5>
+                                <br>
+                               <p class="card-text">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Peroorkkada+Thiruvananthapuram" target="_blank">Location: Peroorkkada, Thiruvananthapuram
+                </a>
+                <br>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+914712432071">Phone: 0471 243 2071</a>
+            </p>
+                                <a href="#" class="btn btn-primary">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <div class="card">
+                            <img src="https://medicalcollege.directory/sites/medicalcollege.directory/files/medicalcollege/Regional-Cancer-Centre%2C-Thiruvanthapuram.jpg" class="card-img-top" alt="Card title6"/>
+                            <div class="card-body">
+                                <h5 class="card-title">Regional Cancer Centre, Thiruvananthapuram</h5>
+                                
+                               <p class="card-text">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Medical+College+Campus+Thiruvananthapuram" target="_blank">
+                    Location: Medical College Campus, Thiruvananthapuram
+                </a>
+                <br>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+914712442541">Phone: +91 471 2442541</a>
+            </p>
+                                <a href="#" class="btn btn-primary">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Third item -->
+        <div class="carousel-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                       <div class="card">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipPaBqt5rVQJQ32FRDfsmfUCOPThCwYLNbl0UA2R=s1360-w1360-h1020" class="card-img-top" alt="General Hospital"/>
+                            <div class="card-body">
+                                <h5 class="card-title">General Hospital</h5>
+                               <p class="card-text">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Red+Cross+Road+Near+Vanchiyoor+Thiruvananthapuram" target="_blank">
+                    Location: Red Cross Road, Near Vanchiyoor, Thiruvananthapuram
+                </a>
+                <br>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+914712303870">Phone: 0471 230 3870</a>
+            </p>
+                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <div class="card">
+                            <img src="https://files.yappe.in/place/full/district-model-hospital-2174151.webp" class="card-img-top" alt="Card title5"/>
+                            <div class="card-body">
+                                <h5 class="card-title">District Model Hospital</h5>
+                                <br>
+                               <p class="card-text">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Peroorkkada+Thiruvananthapuram" target="_blank">Location: Peroorkkada, Thiruvananthapuram
+                </a>
+                <br>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+914712432071">Phone: 0471 243 2071</a>
+            </p>
+                                <a href="#" class="btn btn-primary">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <div class="card">
+                            <img src="https://medicalcollege.directory/sites/medicalcollege.directory/files/medicalcollege/Regional-Cancer-Centre%2C-Thiruvanthapuram.jpg" class="card-img-top" alt="Card title6"/>
+                            <div class="card-body">
+                                <h5 class="card-title">Regional Cancer Centre, Thiruvananthapuram</h5>
+                                
+                               <p class="card-text">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Medical+College+Campus+Thiruvananthapuram" target="_blank">
+                    Location: Medical College Campus, Thiruvananthapuram
+                </a>
+                <br>
+                <i class="fas fa-phone-alt"></i> 
+                <a href="tel:+914712442541">Phone: +91 471 2442541</a>
+            </p>
+                                <a href="#" class="btn btn-primary">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inner -->
+</div>
+<!-- Carousel wrapper -->
+
+<!-- Modals -->
+<!-- Modal for Trivandrum Medical College -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Trivandrum Medical College</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content for Trivandrum Medical College -->
+                <p>The Government Medical College, Thiruvananthapuram (also known as Thiruvananthapuram Medical College) is in Thiruvananthapuram (the capital of Kerala), India. Founded in 1951, it was dedicated by Prime Minister Jawaharlal Nehru and is Kerala's oldest medical college. The college was known in early records as Medical College (of Thiruvananthapuram), since it was the only medical institute in the state at its inception.
+
+                  Its campus houses several hospitals and institutions in addition to Medical College Hospital (MCH), including the Colleges of Nursing and Pharmaceutical sciences, the Regional Cancer Centre, Thiruvananthapuram Dental College, Sree Chitra Tirunal Institute for Medical Sciences and Technology, the Priyadarshini Institute of Paramedical Sciences and the Sree Avittom Thirunal Hospital for Women and Children (SAT Hospital). </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Sree Chitra Tirunal Institute -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Sree Chitra Tirunal Institute For Medical Sciences & Technology</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content for Sree Chitra Tirunal Institute -->
+                <p>Sree Chitra Tirunal Institute for Medical Sciences and Technology (SCTIMST) is an Institution of National Importance under the Department of Science and Technology, Govt. of India. The joint culture of medicine and technology pioneered by its founders more than three decades ago, has come of age and gained unprecedented acceptance in India. The institute has the status of a university and offers excellent research and training facilities. It has three wings: a tertiary referral super specialty hospital, a biomedical technology wing and the Achutha Menon Centre for Health Science Studies.
+
+                  The Institute focuses on high quality, advanced treatment of cardiac and neurological disorders, indigenous development of technologies for biomedical devices and materials and public health training and research. The institute offers advanced treatment using modern technologies in several specialized areas such as interventional radiology, cardiac electrophysiology, deep brain stimulation for movement disorders, epilepsy surgery, pediatric cardiac surgery, base of skull and vascular surgeries, to name a few. The institute has excellent facilities and teams of professionals dedicated to the development of innovative biomedical devices and products, evaluation of medical devices to global specifications, training in novel medical specialties and research in medical and public health areas of social relevance. </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Regional Cancer Centre -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel3">Regional Cancer Centre</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content for Regional Cancer Centre -->
+                <p>The Regional Cancer Centre (RCC) at Thiruvananthapuram is a cancer care hospital and research centre. RCC was established in 1981 by the Government of Kerala and the Government of India.[1] It is located in the Thiruvananthapuram Medical College campus in Thiruvananthapuram, the capital city of the state of Kerala. It was established as an expansion of the Radiation Therapy / Radiotherapy department of Medical College Trivandrum. It is a tertiary care center for the managements of all types of cancers. The clinics are mainly on Haematology, Lymphoreticular, soft tissue, bone, head and neck, breast, CNS, gynaecological, urinary, chest, gastro, paediatric oncology and thyroid.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for General Hospital -->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel4">General Hospital</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Content for General Hospital -->
+                <p>Detailed information about General Hospital goes here.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Blog Start -->
+        <div class="container-fluid blog py-5">
+            <div class="container py-5">
+                <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                    
+                    <h1 class="display-3 mb-4" style="text-align: center;">Best Private Hospitals in Thiruvananthapuram</h1>
+                    <p class="mb-0">Our Smart Metropolis platform provides comprehensive details about Trivandrum City Hospital. You can access information about hospital departments, specialist doctors, visiting hours, and emergency services.</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://lh3.googleusercontent.com/p/AF1QipPYAvWEbuC7JtcPIbfsm5mTLJlqELIgof4NEjmu=s1360-w1360-h1020" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                               
+                                <a href="#" class="h4">Kerala Institute of Medical Sciences ( KIMS)</a>
+                                <p class="my-4">
+                                    The Kerala Institute of Medical Sciences (KIMS) in Trivandrum is a renowned multi-specialty hospital established in 2002. It offers a wide range of medical specialties, including cardiology, orthopedics, neurology, gastroenterology, and oncology. Equipped with state-of-the-art medical facilities, KIMS is dedicated to providing high-quality healthcare services high-quality. Its comprehensive infrastructure and a leading healthcare provider in Kerala.</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://doctorlistingingestionpr.blob.core.windows.net/doctorprofilepic/1670556596569_HospitalProfileImage_Profile%20Pic.png" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">Ananthapuri Hospitals and Research Institute</a>
+                                <p class="my-4">Ananthapuri Hospitals and Research Institute is a well-known healthcare provider in Trivandrum, Kerala. It offers a wide range of medical services across various specialties including cardiology, neurology, orthopedics, oncology, and more. Ananthapuri Hospitals is equipped with modern facilities and advanced medical technology to deliver high-quality healthcare to its patients. It is recognized for its commitment to patient care and medical excellence, serving the community with compassion and expertise. </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://lh3.googleusercontent.com/p/AF1QipMGJhWyLT0up3fhVrsrndGPoPx0yeUicnZekMYf=s1360-w1360-h1020" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">Jubilee Memorial Hospital</a>
+                                <p class="my-4">ubilee Memorial Hospital in Trivandrum is a prominent healthcare institution known for its compassionate and comprehensive medical care. It offers a wide range of medical services and specialties, catering to the diverse health needs of the community. The hospital is committed to providing quality healthcare with a focus on patient well-being, supported by a team of skilled professionals and modern facilities.
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://lh3.googleusercontent.com/places/AAcXr8pyPPTwVHJrahRYt6W9An6XPNj3Efyhf_UJGB8vh1o-JbzJLeH0UY9iJQe1igQVLeX1MyRuVyXgVUemv7Khpl3gxDbLE8aOojU=s1600-h500" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                               
+                                <a href="#" class="h4">PRS Hospital</a>
+                                <p class="my-4">It seems like you might be referring to the PRS Hospital in Trivandrum.PRS Hospital is a prominent healthcare institution known for its specialized medical services and advanced treatments.neurology The hospital is equipped with state-of-the-art facilities and is staffed by a dedicated team of medical professionals committed to providing high-quality care to patients.</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://lh3.googleusercontent.com/p/AF1QipMZt4qm13VmYmHBBLHh98IhHsCk_i801LNoMrKy=s1360-w1360-h1020" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">Lords HospitalInstitute</a>
+                                <p class="my-4">Lords Hospital in Trivandrum is a healthcare institution providing a range of medical services. Specializing in invasive surgeries and laparoscopic procedures, it is equipped with modern medical facilities.The hospital has infrastructure.The hospital offers comprehensive healthcare across various specialties, ensuring quality treatment and patient care. Lords Hospital is dedicated to delivering efficient and affordable healthcare services to the community.
+
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://www.doczo.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdoczo%2Fimage%2Fupload%2Fv1594711179%2Fhospitals%2Fgg-hospital-thiruvananthapuram.jpg&w=256&q=75" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">G G Hospital</a>
+                                <p class="my-4">GG Hospital is much more than a Hospital…. It’s a Healing Home…A Healthier Life Restarts from GG… GG Hospital is the flagship hospital of the Sree Gokulam Group of Companies. Our journey started on 27th January 2016 for the common people in Trivandrum. The History made by the GG Hospital in the life of common people begins in 2016 and continues, which is remarkable to date. <pre>                   </pre>
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://lh3.googleusercontent.com/places/AAcXr8pyPPTwVHJrahRYt6W9An6XPNj3Efyhf_UJGB8vh1o-JbzJLeH0UY9iJQe1igQVLeX1MyRuVyXgVUemv7Khpl3gxDbLE8aOojU=s1600-h500" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                               
+                                <a href="#" class="h4">PRS Hospital</a>
+                                <p class="my-4">It seems like you might be referring to the PRS Hospital in Trivandrum.PRS Hospital is a prominent healthcare institution known for its specialized medical services and advanced treatments.neurology The hospital is equipped with state-of-the-art facilities and is staffed by a dedicated team of medical professionals committed to providing high-quality care to patients.</p>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://lh3.googleusercontent.com/p/AF1QipMZt4qm13VmYmHBBLHh98IhHsCk_i801LNoMrKy=s1360-w1360-h1020" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">Lords HospitalInstitute</a>
+                                <p class="my-4">Lords Hospital in Trivandrum is a healthcare institution providing a range of medical services. Specializing in invasive surgeries and laparoscopic procedures, it is equipped with modern medical facilities.The hospital has infrastructure.The hospital offers comprehensive healthcare across various specialties, ensuring quality treatment and patient care. Lords Hospital is dedicated to delivering efficient and affordable healthcare services to the community.
+
+                                </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="blog-item rounded">
+                            <div class="blog-img">
+                                <img src="https://www.doczo.com/_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdoczo%2Fimage%2Fupload%2Fv1594711179%2Fhospitals%2Fgg-hospital-thiruvananthapuram.jpg&w=256&q=75" class="img-fluid w-100" alt="Image">
+                            </div>
+                            <div class="blog-centent p-4">
+                                
+                                <a href="#" class="h4">G G Hospital</a>
+                                <p class="my-4">GG Hospital is much more than a Hospital…. It’s a Healing Home…A Healthier Life Restarts from GG… GG Hospital is the flagship hospital of the Sree Gokulam Group of Companies. Our journey started on 27th January 2016 for the common people in Trivandrum. The History made by the GG Hospital in the life of common people begins in 2016 and continues, which is remarkable to date. <pre>                   </pre>
+                                </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+       <div class="container mt-5">
+ <div class="title" style="text-align :center">Review</div>
+ <center><div class="underline"></div></center>
+ <div class="scroll-container">
+ <div class="scroll-content">
+ <!-- This will be populated dynamically -->
+ <div class="card mx-2" th:each="review : ${reviews}">
+ <div class="card-body">
+ <div class="avatar-container">
+ <img src="https://w1.pngwing.com/pngs/726/597/png-transparent-graphic-design-icon-customer-service-avatar-icon-design-call-centre-yellow-smile-forehead.png" alt="Avatar" class="avatar">
+ <h5 class="card-title" th:text="${review.name}">Name</h5>
+ </div>
+ <p class="card-text" th:text="${review.feedback}">Feedback</p>
+ <div th:if="${review.imageUrl != null}">
+ <img th:src="@{${review.imageUrl}}" class="img-fluid" alt="Review Image">
+ </div>
+ </div>
+ </div>
+ <!-- Duplicate the review cards to create a smooth scrolling effect -->
+ <div class="card mx-2" th:each="review : ${reviews}">
+ <div class="card-body">
+ <div class="avatar-container">
+ <img src="https://w1.pngwing.com/pngs/726/597/png-transparent-graphic-design-icon-customer-service-avatar-icon-design-call-centre-yellow-smile-forehead.png" alt="Avatar" class="avatar">
+ <h5 class="card-title" th:text="${review.name}">Name</h5>
+ </div>
+ <p class="card-text" th:text="${review.feedback}">Feedback</p>
+ <div th:if="${review.imageUrl != null}">
+ <img th:src="@{${review.imageUrl}}" class="img-fluid" alt="Review Image">
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+ <footer class="ftco-footer ftco-section img" style="background-color: #8B93FF;">
+ <div class="overlay"></div>
+ <div class="container-fluid">
+ <div class="row mb-5">
+ <div class="col-md-3">
+ <div class="ftco-footer-widget mb-4">
+ <h2 class="ftco-heading-2">Smart Metropolis</h2>
+ <p>Discover the heart of Kerala at Trivandrum, where tradition meets modernity amidst the lush landscapes of India's southwestern coast.</p>
+ <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+ <li class="ftco-animate"><a href="#"><span class="fab fa-twitter"></span></a></li>
+ <li class="ftco-animate"><a href="#"><span class="fab fa-facebook"></span></a></li>
+ <li class="ftco-animate"><a href="#"><span class="fab fa-instagram"></span></a></li>
+ <li class="ftco-animate"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="col-md-2">
+ <div class="ftco-footer-widget mb-4 ml-md-5">
+ <h2 class="ftco-heading-2">Main Links</h2>
+ <ul class="list-unstyled">
+ <li><a th:href="@{/index}" class="py-2 d-block">Home</a></li>
+ <li><a th:href="@{/about}" class="py-2 d-block">About</a></li>
+ <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+ <li><a th:href="@{/transport}" class="py-2 d-block">Transport</a></li>
+ <li><a th:href="@{/hospital}" class="py-2 d-block">Hospital</a></li>
+ <li><a th:href="@{/contact}" class="py-2 d-block">Contact</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="col-md-2">
+ <div class="ftco-footer-widget mb-4">
+ <h2 class="ftco-heading-2">Tourism</h2>
+ <ul class="list-unstyled">
+ <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+ <li><a th:href="@{/touristSpot}" class="py-2 d-block">Tourism Spots</a></li>
+ <li><a th:href="@{/hotel}" class="py-2 d-block">Hotels</a></li>
+ <li><a th:href="@{/theater}" class="py-2 d-block">Theater</a></li>
+ <li><a th:href="@{/shoppingCenters}" class="py-2 d-block">Shopping Centers</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="col-md-2">
+ <div class="ftco-footer-widget mb-4">
+ <h2 class="ftco-heading-2">Education</h2>
+ <ul class="list-unstyled">
+ <li><a th:href="@{/schools}" class="py-2 d-block">School</a></li>
+ <li><a th:href="@{/colleges}" class="py-2 d-block">University</a></li>
+ <li><a th:href="@{/skill-development}" class="py-2 d-block">Skill & Development</a></li>
+ <li><a th:href="@{/library}" class="py-2 d-block">Library</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="col-md-3">
+ <div class="ftco-footer-widget mb-4">
+ <h2 class="ftco-heading-2">Additional Links</h2>
+ <ul class="list-unstyled">
+ <li><a th:href="@{/location-finding}" class="py-2 d-block">Location Finding</a></li>
+ <li><a th:href="@{/language-translator}" class="py-2 d-block">Language Translator</a></li>
+ <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal">Open Review Form</button>
+ </ul>
+ </div>
+ </div>
+ </div>
+ <div class="row">
+ <div class="col-md-12">
+ <p style="text-align: center;">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Smart Metropolis</p>
+ </div>
+ </div>
+ </div>
+ </footer>
+
+ <!-- The Modal -->
+
+<div class="modal" id="myModal">
+ <div class="modal-dialog">
+ <div class="modal-content">
+ <!-- Modal Header -->
+ <div class="modal-header">
+ <h4 class="modal-title">Review Form</h4>
+ <button type="button" class="close" data-dismiss="modal">&times;</button>
+ </div>
+ <!-- Modal Body -->
+ <div class="modal-body">
+<form th:action="@{/submitReview}" method="post" enctype="multipart/form-data" id="reviewForm">
+ <div class="form-group">
+ <label for="name"><b>Name</b></label>
+ <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
+ </div>
+ <div class="form-group">
+ <label for="feedback"><b>Feedback</b></label>
+ <textarea class="form-control" id="feedback" name="feedback" placeholder="Enter Feedback" rows="4" required></textarea>
+ </div>
+ <div class="form-group">
+ <label for="file"><b>Share Your Experience</b></label>
+ <input type="file" class="form-control-file" id="file" name="file" required>
+ </div>
+ <button type="submit" class="btn btn-primary">Submit</button>
+ <button type="button" class="btn btn-custom btn-custom-close" data-dismiss="modal">Close</button>
+</form>
+ </div>
+ </div>
+ </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <a href="#" class="btn btn-lg btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+ <!-- JavaScript Libraries -->
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="lib/wow/wow.min.js"></script>
+ <script src="lib/easing/easing.min.js"></script>
+ <script src="lib/waypoints/waypoints.min.js"></script>
+ <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+ <script src="lib/counterup/counterup.min.js"></script>
+ <script src="lib/parallax/parallax.min.js"></script>
+ <script src="lib/isotope/isotope.pkgd.min.js"></script>
+ <script src="lib/lightbox/js/lightbox.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybL8eWLYZ4l6eyD+kL+kYY1zK/VNU6z5p3p/49p6eFLJ7MXh4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9fXeoHyJM1zy6CVpS5Jp6MOy5igZVqC6p/tTwf0e5ZJmHVx9Fw5yFF7" crossorigin="anonymous"></script>
+ <script src="js/main.js"></script>
+
+ <!-- Bootstrap JS and dependencies -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+ window.watsonAssistantChatOptions = {
+ integrationID: "fde24680-b643-4331-bcf6-68a7b0eabdfc", // The ID of this integration.
+ region: "au-syd", // The region your integration is hosted in.
+ serviceInstanceID: "f3ca861d-3575-4e8c-830f-887e43210a6b", // The ID of your service instance.
+ onLoad: async (instance) => { await instance.render(); }
+ };
+
+ setTimeout(function(){
+ const t=document.createElement('script');
+ t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+ document.head.appendChild(t);
+ });
+</script>
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <!-- Bootstrap JS -->
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

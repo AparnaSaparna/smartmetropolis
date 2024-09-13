@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Login System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            overflow: hidden;
+        }
+        .login-image {
+            background: url('https://i.pinimg.com/564x/0c/9b/89/0c9b89b62ba04b4b4740f4ce2da28b54.jpg') no-repeat center center;
+            background-size: cover;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            min-height: 400px;
+        }
+        .login-form {
+            padding: 40px 30px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .alert {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var valid = true;
+
+            if (username == "") {
+                document.getElementById("usernameError").innerHTML = "Username is required";
+                valid = false;
+            } else {
+                document.getElementById("usernameError").innerHTML = "";
+            }
+
+            if (password == "") {
+                document.getElementById("passwordError").innerHTML = "Password is required";
+                valid = false;
+            } else {
+                document.getElementById("passwordError").innerHTML = "";
+            }
+
+            return valid;
+        }
+    </script>
+</head>
+<body>
+
+<br/><br/>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card login-container">
+                <div class="row g-0">
+                    <div class="col-md-6 login-image"></div>
+                    <div class="col-md-6 login-form">
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">Invalid Email or Password</div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="alert alert-success">You have been logged out.</div>
+                        </div>
+                        <div class="card-header text-center">
+                            <h2>Admin Login</h2>
+                        </div>
+                        <div class="card-body">
+                            <form role="form" class="form-horizontal" method="post" action="/admin/login" onsubmit="return validateForm()">
+                                <div class="form-group">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" id="username" name="username" class="form-control"
+                                           placeholder="Enter Username"/>
+                                    <div id="usernameError" class="text-danger"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="password" name="password" class="form-control"
+                                           placeholder="Enter Password"/>
+                                    <div id="passwordError" class="text-danger"></div>
+                                </div>
+                                <center><button type="submit" class="btn btn-primary">Login</button></center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Voice to Voice Translator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
+    
+    <!-- title icon  -->
+    <link rel="icon" href="images/v.png" type="image/x-icon">
+    <!-- end -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+    <style>
+      body {
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+        font-family: "Roboto", Arial, sans-serif;
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 750px;
+        width: 100%;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .container:hover {
+        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      }
+      .header {
+        background: #5372F0;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .wrapper {
+        padding: 30px;
+      }
+      .text-input {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .text-input textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+        background: #f8f9fa;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 5px;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .text-input textarea::placeholder {
+        color: #b7b6b6;
+      }
+      .controls, .icons, .icons i {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .controls {
+        list-style: none;
+        padding: 0;
+        gap: 20px;
+      }
+
+      .controls .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .controls .icons i {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #adadad;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.2s ease, transform 0.2s ease;
+      }
+      .controls .icons i:hover {
+        color: #5372F0;
+        transform: scale(1.1);
+      }
+      .controls .exchange {
+        color: #adadad;
+        cursor: pointer;
+        font-size: 20px;
+        transition: transform 0.2s ease;
+      }
+      .controls .exchange:hover {
+        color: #5372F0;
+        transform: rotate(180deg);
+      }
+      #voice button, #translateBtn {
+        width: 100%;
+        padding: 15px;
+        outline: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 17px;
+        border-radius: 5px;
+        background: #5372F0;
+        transition: background 0.3s ease;
+      }
+
+      #voice button:hover, #translateBtn:hover {
+        background: #4358b1;
+      }
+
+      @media (max-width: 660px) {
+        .container {
+          padding: 20px;
+        }
+
+        .controls .row {
+          flex-direction: column;
+        }
+
+        .controls .exchange {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="voice">
+      <div class="header">Voice to Voice Translator</div>
+      <button onclick="startConverting();"><i class="fa fa-microphone btn btn-danger" aria-hidden="true"></i></button>
+      <div class="wrapper">
+        <div class="text-input">
+          <textarea spellcheck="false" class="from-text" id="fromText" placeholder="Enter text"></textarea>
+          <textarea spellcheck="false" readonly disabled class="to-text" placeholder="Translation"></textarea>
+        </div>
+        <ul class="controls">
+          <li class="row from">
+            <div class="icons">
+              <i id="from" class="fas fa-volume-up"></i>
+              <i id="from" class="fas fa-copy"></i>
+            </div>
+            <select></select>
+          </li>
+          <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+          <li class="row to">
+            <select></select>
+            <div class="icons">
+              <i id="to" class="fas fa-volume-up"></i>
+              <i id="to" class="fas fa-copy"></i>
+            </div>
+          </li>
+        </ul>
+        <button id="translateBtn">Translate Text</button>
+      </div>
+    </div>    
+    <script src="js/countries.js"></script>
+    <script src="js/voice.js"></script>
+  </body>
+</html>

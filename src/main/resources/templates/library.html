@@ -1,0 +1,765 @@
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Smart Metropolis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="icon" type="img/x-icon" href="img/idea.png">
+    
+    <!-- Include Bootstrap CSS and Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+    
+ .blur-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+   .notification-box {
+    display: none;
+    position: fixed;
+    top: 35%; /* Adjusted to be slightly above the center */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 400px; /* Increased width */
+    height: 300px; /* Increased height */
+    text-align: center;
+    z-index: 3;
+}
+
+.notification-box .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Close button on the right */
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ff4c4c;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.notification-box .close-btn:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+    .notification-box.show {
+        display: block;
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+
+    .stars {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .star {
+        font-size: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .star:hover {
+        transform: scale(1.5) rotate(15deg);
+        color: #ffcc00;
+    }
+
+    .star.selected {
+        color: #ffcc00;
+        transform: scale(1.3);
+    }
+
+    .emoji {
+        font-size: 50px;
+        margin-top: 15px;
+        height: 100px;
+        width: 100px;
+        background-size: cover;
+        background-position: center;
+        display: none;
+        margin: 20px auto;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .emoji.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .open-review-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .open-review-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+ /* Centered heading with red underline */
+.section-heading {
+    text-align: center;
+    position: relative;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.section-heading::after {
+    content: "";
+    display: block;
+    width: 15%;
+    height: 3px;
+    background-color: red;
+    margin: 10px auto 0;
+}
+
+/* Scrolling container */
+.scroll-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Scrollable content */
+.scroll-content {
+    display: flex;
+    width: calc(300px * 20); /* Adjust based on the total number of duplicated cards */
+    animation: scroll 40s linear infinite; /* Slower speed */
+}
+
+/* Keyframes for scrolling */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause scrolling on hover */
+.scroll-container:hover .scroll-content {
+    animation-play-state: paused; /* Pauses the animation on hover */
+}
+
+/* Card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Card body */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Avatar container */
+.avatar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Avatar image */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Card title */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    text-align: left;
+}
+
+/* Card text */
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Image styling */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: auto;
+}
+
+
+
+    .navbar-avatar {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+
+ 
+    
+
+
+    .navbar-avatar {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+.library-list {
+    margin-top: 20px;
+}
+
+.library-card {
+    display: flex;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    flex-direction: row;
+}
+
+.library-card:hover {
+    transform: scale(1.03);
+}
+
+.library-card-content {
+    padding: 15px;
+}
+
+.library-card-title {
+    font-size: 30px; /* Further increased font size */
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.library-card-text {
+    margin: 5px 0;
+    font-size: 16px; /* Increased font size */
+    color: #555;
+}
+
+.library-card-text i {
+    font-size: 18px; /* Increased icon size */
+    color: #007bff; /* Changed icon color */
+    margin-right: 8px; /* Added space between icon and text */
+    
+}
+
+.library-card-image-wrapper img {
+    width: 100%; /* Ensures the image uses the full width of its container */
+    height: 300px; /* Set a fixed height for images */
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+   <div class="container-fluid px-0" style="background-color: #050C9C;" id="navbar">
+    <div class="row g-0 d-none d-lg-flex">
+        <!-- Left side with social media links -->
+        <div class="col-lg-6 ps-5 text-start">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+                <span>Follow Us:</span>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-link text-light" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-link text-light" th:href="@{https://www.google.com/maps/@8.5762071,76.8606208,13z?authuser=0&entry=ttu}"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+        
+        <!-- Right side with admin icon -->
+        <div class="col-lg-6 pe-5 text-end">
+            <div class="h-100 d-inline-flex align-items-center text-white">
+               <a class="btn btn-link text-light" th:href="@{/admin/login}"><i class="fas fa-user-cog"></i></a> <!-- Admin icon -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+    <a th:href="@{/}" class="navbar-brand ps-5 me-0">
+        <img src="img/logo.png" alt="" width="290px" height="75px">
+    </a>
+    <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a th:href="@{/}" class="nav-item nav-link active">Home</a>
+            <a th:href="@{/about}" class="nav-item nav-link">About</a>
+            
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tourism</a>
+                <div class="dropdown-menu m-0">
+                    <a th:href="@{/tourism}" class="dropdown-item">Tourism</a>
+                   <a th:href="@{/touristsport}" class="dropdown-item">Tourist Spots</a>
+
+                    <a th:href="@{/hotel}" class="dropdown-item">Hotels</a>
+                    <a th:href="@{/Theater}" class="dropdown-item">Theater</a>
+                    <a th:href="@{/ShoppingCenters}" class="dropdown-item">Shopping Centers</a>
+                  
+                </div>
+            </div>
+           
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Education</a>
+                <div class="dropdown-menu m-0">
+                    <a th:href="@{/education}" class="dropdown-item">Education </a>
+                    <a th:href="@{/schools}" class="dropdown-item">Schools </a>
+                    <a th:href="@{/colleges}" class="dropdown-item"> Universities</a>
+                    <a th:href="@{/tsd}" class="dropdown-item">Training & Skill Development</a>
+                    <a th:href="@{/library}" class="dropdown-item">Library</a>
+                    
+                </div>
+            </div>
+            
+            <a th:href="@{/transport}" class="nav-item nav-link">Transportation</a>
+            <a th:href="@{/hospital}" class="nav-item nav-link">Hospitality</a>
+            <a th:href="@{/contact}" class="nav-item nav-link">Contact</a>
+            
+              <div class="nav-item dropdown" >
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                 <img src="https://static.vecteezy.com/system/resources/thumbnails/001/993/889/small/beautiful-latin-woman-avatar-character-icon-free-vector.jpg" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px;"></a>
+                <div class="dropdown-menu m-0">
+                
+             
+              
+                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    
+                </div>
+            </div>
+          
+            
+        </div>
+    </div>
+</nav>
+
+           
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" >
+      
+        <div class="container text-center py-5">
+       
+            <h1 class="display-3  mb-4 animated slideInDown">Libraries In Trivandrum</h1>
+                 
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+<div class="container my-4">
+    <h1 class="mb-4"></h1>
+    <div class="row gy-4 library-list">
+        <div class="col-lg-6" th:each="library : ${libraries}">
+            <div class="library-card">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <div class="library-card-image-wrapper">
+                            <img th:src="@{'/uploads/' + ${library.imagePath}}" alt="Library Image">
+                        </div>
+                    </div>
+                    <div class="col-xl-7 d-flex align-items-center">
+                        <div class="library-card-content">
+                            <h5 class="library-card-title" th:text="${library.name}"></h5>
+                            <p class="library-card-text">
+                                <i class="fas fa-info-circle"></i>
+                                <span th:text="${library.description}"></span>
+                            </p>
+                            <p class="library-card-text">
+                                <i class="fas fa-clock"></i>
+                               <b>Opening Time:</b> <b><span th:text="${library.openingTime}"></span></b>
+                            </p>
+                            <p class="library-card-text">
+                                <i class="fas fa-clock"></i><b>
+                                Closing Time:</b> <b><span th:text="${library.closingTime}"></span></b>
+                            </p>
+                            <p class="library-card-text">
+                                <i class="fas fa-phone-alt"></i>
+                                <b><span th:text="${library.contact}"></span></b>
+                            </p>
+                            <p class="library-card-text">
+                                <i class="fas fa-envelope"></i>
+                                <b><span th:text="${library.email}"></span></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="ftco-footer ftco-section img" style="background-color: #8B93FF;">
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row mb-5">
+            <div class="col-md-3">
+    <div class="ftco-footer-widget mb-4">
+        <h2 class="ftco-heading-2">Smart Metropolis</h2>
+        <p>Discover the heart of Kerala at Trivandrum, where tradition meets modernity amidst the lush landscapes of India's southwestern coast.</p>
+        <ul class="ftco-footer-social list-unstyled mt-5">
+            <li class="ftco-animate"><a href="#"><span class="fab fa-twitter"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-facebook"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-instagram"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="fab fa-linkedin"></span></a></li>
+        </ul>
+        <!-- Add a clearfix to make sure the button is below the icons -->
+        <div class="clearfix"></div>
+        <button class="open-review-btn mt-4" id="openReviewBtn">Rate Your Experience</button>
+    </div>
+</div>
+
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Main Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/index}" class="py-2 d-block">Home</a></li>
+                        <li><a th:href="@{/about}" class="py-2 d-block">About</a></li>
+                        <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+                        <li><a th:href="@{/transport}" class="py-2 d-block">Transport</a></li>
+                        <li><a th:href="@{/hospital}" class="py-2 d-block">Hospital</a></li>
+                        <li><a th:href="@{/contact}" class="py-2 d-block">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Tourism</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/tourism}" class="py-2 d-block">Tourism</a></li>
+                        <li><a th:href="@{/touristSpot}" class="py-2 d-block">Tourism Spots</a></li>
+                        <li><a th:href="@{/hotel}" class="py-2 d-block">Hotels</a></li>
+                        <li><a th:href="@{/theater}" class="py-2 d-block">Theater</a></li>
+                        <li><a th:href="@{/shoppingCenters}" class="py-2 d-block">Shopping Centers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Education</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/schools}" class="py-2 d-block">School</a></li>
+                        <li><a th:href="@{/colleges}" class="py-2 d-block">University</a></li>
+                        <li><a th:href="@{/skill-development}" class="py-2 d-block">Skill & Development</a></li>
+                        <li><a th:href="@{/library}" class="py-2 d-block">Library</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Additional Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a th:href="@{/location-finding}" class="py-2 d-block">Location Finding</a></li>
+                        <li><a th:href="@{/language-translator}" class="py-2 d-block">Language Translator</a></li>
+                        <li> <button type="button" class="open-review-btn mt-4" data-bs-toggle="modal" data-bs-target="#reviewFormModal">
+            Feedback
+        </button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+       <div class="row">
+        <div class="col-md-12">
+            <p style="text-align: center;">&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Stack Jet</p>
+        </div>
+    </div>
+    </div>
+</footer>
+
+
+<!-- Review Form Modal -->
+<div class="modal fade" id="reviewFormModal" tabindex="-1" aria-labelledby="reviewFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <!-- Left Side: Image with Increased Width -->
+                    <div class="col-md-6">
+                        <img src="https://cdn.dribbble.com/users/159535/screenshots/4877142/originmeals-feedback-dribbble.gif" 
+                             alt="Feedback Image" 
+                             class="img-fluid" 
+                             style="height: 100%; object-fit: cover;">
+                    </div>
+                    <!-- Right Side: Form with Box Shadow -->
+                    <div class="col-md-6">
+                        <div class="modal-header" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                            <h5 class="modal-title" id="reviewFormModalLabel">Submit Your Feedback</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <form th:action="@{/submitReview}" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="feedback" class="form-label">Feedback</label>
+        <textarea class="form-control" id="feedback" name="feedback" rows="3" required></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="file" class="form-label">Upload File</label>
+        <input type="file" class="form-control" id="file" name="file">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <div class="blur-overlay" id="blurOverlay"></div>
+    <div class="notification-box animated" id="notificationBox">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <p>Please rate your experience:</p>
+        <div class="stars" id="stars">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <div class="emoji animated" id="emoji"></div> <!-- Emoji container -->
+  <!-- Add this form in your HTML -->
+<form id="ratingForm" th:action="@{/ratings/submit}" method="post">
+    <!-- The username will be dynamically set from your Thymeleaf context -->
+    <input type="hidden" name="userName" id="userName" th:value="${currentUserName}"/>
+    <input type="hidden" name="stars" id="starsInput"/>
+    <button type="submit" id="okBtn" class="open-review-btn">OK</button>
+</form>
+
+
+    </div>
+
+<script>
+document.getElementById('okBtn').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var stars = document.querySelectorAll('.star.selected').length;
+    var userName = "exampleUser"; // Replace with the actual user name logic
+
+    // Set the values in the hidden fields
+    document.getElementById('userName').value = userName;
+    document.getElementById('starsInput').value = stars;
+
+    // Submit the form
+    document.getElementById('ratingForm').submit();
+});
+
+    const openReviewBtn = document.getElementById('openReviewBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const notificationBox = document.getElementById('notificationBox');
+    const blurOverlay = document.getElementById('blurOverlay');
+    const okBtn = document.getElementById('okBtn');
+    let selectedRating = null;
+
+    // Show the notification box and blur overlay when the button is clicked
+    openReviewBtn.addEventListener('click', function() {
+        notificationBox.classList.add('show');
+        blurOverlay.style.display = 'block';
+        setTimeout(() => {
+            blurOverlay.style.opacity = 1;
+        }, 10);
+    });
+
+    // Close the notification box and remove blur when the close button is clicked
+    closeBtn.addEventListener('click', function() {
+        notificationBox.classList.remove('show');
+        blurOverlay.style.opacity = 0;
+        setTimeout(() => {
+            blurOverlay.style.display = 'none';
+        }, 300);
+    });
+
+    // Handle star selection and GIF display
+    const stars = document.querySelectorAll('.star');
+    const emoji = document.getElementById('emoji');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            stars.forEach(s => s.classList.remove('selected'));
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('selected');
+            }
+
+            // Update the GIF based on the selected rating
+            switch (index + 1) {
+                case 1:
+                    emoji.style.backgroundImage = 'url("https://cliply.co/wp-content/uploads/2021/03/392103840_SAD_EMOJI_WITH_TEAR_400px.gif")';
+                    break;
+                case 2:
+                    emoji.style.backgroundImage = 'url("https://cliply.co/wp-content/uploads/2021/03/392103390_SAD_EMOJI_400px.gif")';
+                    break;
+                case 3:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/kQoFKDYP30kAAAAi/slightly-smiling-face-people.gif")';
+                    break;
+                case 4:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/3eDU879uzT4AAAAi/shy-blushing.gif")';
+                    break;
+                case 5:
+                    emoji.style.backgroundImage = 'url("https://media.tenor.com/xmXA1zL88SkAAAAi/dm4uz3-foekoe.gif")';
+                    break;
+            }
+            emoji.classList.add('show');
+            selectedRating = index + 1;
+        });
+    });
+
+    // Handle OK button click
+    okBtn.addEventListener('click', () => {
+        if (selectedRating === null) {
+            alert("Please choose your rating!");
+        } else {
+            alert("Thank you for your rating!");
+            notificationBox.classList.remove('show');
+            blurOverlay.style.opacity = 0;
+            setTimeout(() => {
+                blurOverlay.style.display = 'none';
+            }, 300);
+            
+            // Optionally, you can send the rating to the server
+            fetch('/send-rating', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ rating: selectedRating })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    });
+</script>
+<a href="#" class="btn btn-lg   btn-lg-square rounded-circle back-to-top" ><i class="bi bi-arrow-up"></i></a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/parallax/parallax.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<script src="js/main.js"></script>
+
+    <script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "fde24680-b643-4331-bcf6-68a7b0eabdfc", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "f3ca861d-3575-4e8c-830f-887e43210a6b", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script> 
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Metropolis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+
+        .btn-back {
+            background-color: #007bff; /* Blue background color */
+            color: #ffffff; /* White text color */
+            padding: 10px 20px; /* Padding for button size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            font-weight: bold; /* Bold text */
+            text-align: center; /* Center text */
+            text-decoration: none; /* Remove underline from text */
+            display: inline-block; /* Inline-block display */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+            position: absolute; /* Absolute positioning */
+            left: 20px; /* Distance from the left edge */
+            top: 20px; /* Distance from the top edge */
+        }
+
+        .btn-back i {
+            margin-right: 5px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #050C9C;
+            margin: 20px 0;
+            text-align: center; /* Center the heading */
+        }
+
+        table {
+            width: 100%; /* Full width of the container */
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #050C9C;
+            color: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-delete {
+            background-color: #dc3545; /* Red background color for delete button */
+            color: #fff; /* White text color */
+            padding: 6px 12px; /* Padding for button size */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        img {
+            max-width: 100%; /* Responsive image width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a th:href="@{/admin-dashboard}" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+        <h1>Review List</h1>
+  <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Feedback</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="review : ${reviews}">
+                    <td th:text="${review.id}"></td>
+                    <td th:text="${review.name}"></td>
+                    <td th:text="${review.feedback}"></td>
+                    <td>
+                        <img th:src="@{/uploads/{file}(file=${review.filePath})}" alt="Review Image" width="100">
+                    </td>
+                    <td>
+                        <form th:action="@{/delete_review}" method="post" style="display:inline;">
+                            <input type="hidden" name="id" th:value="${review.id}">
+                            <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Smart Metropolis</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            outline: none;
+
+            border: none;
+
+            text-decoration: none;
+
+            box-sizing: border-box;
+
+            font-family: "Poppins", sans-serif;
+
+        }
+
+
+
+        body {
+
+            background: #f4f7fa;
+
+            display: flex;
+
+            min-height: 100vh;
+
+            margin: 0;
+
+        }
+
+
+
+        nav {
+
+            width: 260px;
+
+            background: #fff;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            position: fixed;
+
+            height: 100%;
+
+            top: 0;
+
+            left: 0;
+
+            overflow: auto;
+
+        }
+
+
+
+        .logo {
+
+            padding: 20px;
+
+            text-align: center;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+
+        .logo img {
+
+            width: 50px;
+
+            height: 50px;
+
+        }
+
+
+
+        .logo span {
+
+            font-weight: bold;
+
+            font-size: 18px;
+
+            text-transform: uppercase;
+
+            display: block;
+
+            margin-top: 10px;
+
+        }
+
+
+
+        nav ul {
+
+            list-style: none;
+
+        }
+
+
+
+        nav ul li {
+
+            margin: 0;
+
+        }
+
+
+
+        nav a {
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 15px;
+
+            color: #333;
+
+            font-size: 14px;
+
+            transition: background 0.3s;
+
+        }
+
+
+
+        nav a:hover {
+
+            background: #f0f0f0;
+
+        }
+
+
+
+        nav .fas {
+
+            font-size: 18px;
+
+            margin-right: 15px;
+
+        }
+
+
+
+        .dropdown-menu {
+
+            display: none;
+
+            position: absolute;
+
+            left: 260px;
+
+            top: 0;
+
+            background: #fff;
+
+            width: 220px;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+            z-index: 1000;
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0;
+
+        }
+
+
+
+        .dropdown-menu li {
+
+            padding: 10px;
+
+        }
+
+
+
+        .dropdown-menu li a {
+
+            display: block;
+
+            color: #333;
+
+        }
+
+
+
+        .dropdown-menu li a:hover {
+
+            background: #f0f0f0;
+
+        }
+
+
+
+        .dropdown:hover .dropdown-menu {
+
+            display: block;
+
+        }
+
+
+
+        .container {
+
+            margin-left: 260px;
+
+            padding: 20px;
+
+            width: calc(100% - 260px);
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+
+        .main-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+
+        .main-top h1 {
+
+            font-size: 24px;
+
+            color: #050C9C;
+
+        }
+
+
+
+        .main-top i {
+
+            font-size: 20px;
+
+            color: #666;
+
+            cursor: pointer;
+
+        }
+
+
+
+        .main-content {
+
+            flex: 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+
+        .section {
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+        .section h2 {
+
+            font-size: 20px;
+
+            color: #333;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+        .section-content {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+        }
+
+
+
+        .box {
+
+            width: calc(33.33% - 20px);
+
+            background: #fff;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            overflow: hidden;
+
+            transition: transform 0.3s;
+
+        }
+
+
+
+        .box:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        .box img {
+
+            width: 100%;
+
+            height: 200px;
+
+            object-fit: cover;
+
+        }
+
+
+
+        .box-content {
+
+            padding: 15px;
+
+        }
+
+
+
+        .box-content h3 {
+
+            margin: 0;
+
+            font-size: 18px;
+
+            color: #333;
+
+        }
+
+
+
+        .box-content p {
+
+            font-size: 14px;
+
+            color: #666;
+
+            margin: 10px 0;
+
+        }
+
+
+
+        .box-content a, .box-content button {
+
+            display: inline-block;
+
+            background-color: #050C9C;
+
+            color: #fff;
+
+            padding: 10px 15px;
+
+            border-radius: 5px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            transition: background 0.3s;
+
+        }
+
+
+
+        .box-content a:hover, .box-content button:hover {
+
+            background: #0056b3;
+
+        }
+
+        /* Updated Styles for Forms Section */
+
+.forms .box {
+
+    background-color: #ffffff;
+
+    border: 2px solid #050C9C;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    overflow: hidden;
+
+    padding: 20px;
+
+    text-align: center;
+
+}
+
+
+
+.forms .box:hover {
+
+    transform: scale(1.05);
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+.forms .box h3 {
+
+    font-size: 20px;
+
+    color: #050C9C;
+
+    margin: 10px 0;
+
+}
+
+
+
+.forms .box p {
+
+    color: #555;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.forms .box .btn {
+
+    display: inline-block;
+
+    background-color: #050C9C;
+
+    color: #fff;
+
+    padding: 12px 24px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    transition: background-color 0.3s;
+
+}
+
+
+
+.forms .box .btn:hover {
+
+    background-color: #040a7c;
+
+}
+
+
+
+/* New Style for Review Form */
+
+.review-form {
+
+    background-color: #f0f0f0;
+
+    border: 2px solid #ccc;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    padding: 20px;
+
+    text-align: center;
+
+}
+
+
+
+.review-form h3 {
+
+    font-size: 22px;
+
+    color: #333;
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.review-form p {
+
+    color: #666;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.review-form .btn {
+
+    background-color: #28a745;
+
+    color: #fff;
+
+    padding: 12px 25px;
+
+    text-decoration: none;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    transition: background-color 0.3s;
+
+}
+
+
+
+.review-form .btn:hover {
+
+    background-color: #218838;
+
+}
+
+
+
+/* Responsive Design for Forms Section */
+
+@media (max-width: 768px) {
+
+    .forms .section-content {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+
+    .forms .box {
+
+        width: 100%;
+
+    }
+
+}
+
+.main-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between; /* Space out the items */
+
+    padding: 20px;
+
+    border-bottom: 1px solid #ddd;
+
+    background-color: #fff;
+
+}
+
+
+
+.logo-container {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+
+.logo-container img {
+
+    width: 50px;
+
+    height: 50px;
+
+}
+
+
+
+.logo-container span {
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    text-transform: uppercase;
+
+    margin-left: 10px;
+
+}
+
+
+
+.dashboard-title {
+
+    flex: 1; /* Take up available space */
+
+    text-align: center; /* Center align the title */
+
+    font-size: 2rem; /* Larger font size */
+
+    font-weight: 700; /* Bold text */
+
+    color: #050C9C;; /* Theme color */
+
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+
+    margin: 0; /* Remove default margin */
+
+    padding: 10px 0; /* Padding for spacing */
+
+}
+
+
+
+.main-top i {
+
+    font-size: 20px;
+
+    color: #050C9C;
+
+    cursor: pointer;
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="logo">
+
+            <img src="/img/adminlogo.png" alt="Logo">
+
+            <span>Smart Metropolis</span>
+
+        </div>
+
+        <ul>
+
+            <li class="dropdown">
+
+                <a th:href="@{/place_view}">
+
+                    <i class="fas fa-map-marker-alt"></i>
+
+                    Tourist Spot
+
+                </a>
+
+               
+
+            </li>
+
+            <li class="dropdown">
+
+                <a href="@{/hotel}">
+
+                    <i class="fas fa-hotel"></i>
+
+                    Hotel
+
+                </a>
+
+               
+            </li>
+
+           <li class="dropdown">
+    <a href="#">
+        <i class="fas fa-store"></i> <!-- Or use fa-shopping-bag -->
+        Shopping Centers
+    </a>
+</li>
+
+
+            <li class="dropdown">
+
+                <a th:href="@{/sport_view}">
+
+                    <i class="fas fa-school"></i>
+
+                    Schools
+
+                </a>
+
+               
+
+            </li>
+
+            <li class="dropdown">
+
+                <a th:href="@{/university_view}">
+
+                    <i class="fas fa-university"></i>
+
+                    Universities
+
+                </a>
+
+                
+
+            </li>
+
+            <li class="dropdown">
+
+                <a href="#">
+
+                    <i class="fas fa-book"></i>
+
+                    Library
+
+                </a>
+
+               
+
+            </li>
+
+            <li>
+
+                
+                  <a th:href="@{/index}" class="logout">
+
+                    <i class="fas fa-sign-out-alt"></i>
+
+                    Log out
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <div class="container">
+
+        <section class="main">
+
+            <div class="main-top">
+
+                <h1 class="dashboard-title">ADMIN DASHBOARD</h1>
+
+                <br><br>
+
+                <i class="fas fa-user-cog"></i>
+
+            </div>
+
+          
+
+            <div class="main-content">
+            
+
+                <!-- Tourism Section -->
+
+                <div class="section tourism">
+
+                    <h2>Tourism</h2>
+
+                    <div class="section-content">
+
+                        <div class="box">
+
+                            <img src="https://www.favouritehomes.com/wp-content/uploads/2019/05/interesting-sightseeing-places-trivandrum.jpg" alt="Tourist Spot">
+
+                            <div class="box-content">
+
+                                <h3>Manage Tourist Spot</h3>
+
+                                <p>Manage descriptions and details of tourist spots.</p>
+
+                                <a th:href="@{/place_view}">view details</a>
+
+                            </div>
+
+                        </div>
+
+                        <div class="box">
+
+                            <img src="https://images7.alphacoders.com/362/362619.jpg" alt="Hotel">
+
+                            <div class="box-content">
+
+                                <h3>Manage Hotel</h3>
+
+                                <p>Manage descriptions and details of hotels.</p>
+
+                                  <a th:href="@{/hotel_view}">view details</a>
+                            </div>
+
+                        </div>
+
+                        <div class="box">
+
+                              <img src="/img/tvmmall.jpg" alt="Shopping">
+
+                            <div class="box-content">
+
+                                <h3>Manage Shopping</h3>
+
+                                <p>Manage descriptions and details of shopping centers.</p>
+
+                                <a th:href="@{/shop_view}">view details</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End of Tourism Section -->
+
+                <!-- Additional sections can be added here -->
+           <!-- Education Section -->
+
+<div class="section education">
+
+    <h2>Education</h2>
+
+    <div class="section-content">
+
+        <div class="box">
+
+            <img src="https://media.istockphoto.com/id/1156684829/photo/interior-of-classroom-in-elementary-school.jpg?s=612x612&w=0&k=20&c=HaIqzeZh8ffGHYBwS1DVrs6RxTKTIRSeF5JXVhC05KU=" alt="School" class="box-image">
+
+            <div class="box-content">
+
+                <h3>Manage School</h3>
+
+                <p>Manage descriptions and details of schools.</p>
+
+                <a th:href="@{/sport_view}">view details</a>
+
+            </div>
+
+        </div>
+
+        <div class="box">
+
+            <img src="/img/tvmuni.jpg" alt="University" class="box-image">
+
+            <div class="box-content">
+
+                <h3>Manage University</h3>
+
+                <p>Manage descriptions and details of universities.</p>
+
+               <a th:href="@{/view_university}" class="btn">View Details</a>
+
+
+            </div>
+
+        </div>
+
+        <div class="box">
+
+            <img src="/img/tvmlibrary.jpg" alt="Library" class="box-image">
+
+            <div class="box-content">
+
+                <h3>Manage Library</h3>
+
+                <p>Manage descriptions and details of libraries.</p>
+
+                <a th:href="@{/library_view}" class="btn">View Details</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Forms Section -->
+
+<div class="section forms">
+
+    <h2>Forms</h2>
+
+    <div class="section-content">
+
+    <div class="box">
+
+    <h3>Manage Login Form</h3>
+
+    <p>Manage settings and functionality of the login form.</p>
+
+    <a th:href="@{/registration_data}" class="btn">View Details</a>
+
+</div>
+
+    <div class="box">
+    <h3>Manage Contact Form</h3>
+    <p>Handle submissions and manage contact form settings.</p>
+    <!-- Update the href to the correct URL -->
+   <a th:href="@{/contact/view}" class="btn">View Details</a>
+
+</div>
+
+
+        <div class="box">
+
+            <h3>Manage Review Form</h3>
+
+            <p>Handle reviews and manage settings for the review form.</p>
+
+            <a th:href="@{/review_view}"class="btn">View Details</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
+
